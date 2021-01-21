@@ -6,6 +6,9 @@ class App extends Component {
   render() {
     return (
       <div className="app">
+        {/*
+        Components containing all routes to components
+        */}
         <header className="app-header">
           <RoutesContainer />
         </header>
