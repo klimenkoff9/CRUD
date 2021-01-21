@@ -1,27 +1,25 @@
 import React  from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router} from 'react-router-dom';
 
 import Routes from "./Routes"
+import Navbar from "../components/Navbar/Navbar"
 
 const App = () => {
   return (
     <Router>
-
-        {/* <header>
-          <Navbar />
-        </header> */}
-
+    <div>
+      <header>
+      <Navbar />
+      </header>
+      
       <main>
-        <Routes />
+      <Routes />
       </main>
 
-      {/* <footer>
-        <Footer />
-      </footer> */}
-      
+    </div>
     </Router>
-  )
+  );
 };
 
 export default App;
