@@ -1,13 +1,11 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+
 const Routes = () => {
-    return (
-    //   <Switch>
-    
-    //   </Switch>
+  return (
     <h1>Hello World</h1>
-    );
-  };
-  
-  export default Routes;
+  );
+};
+
+export default Routes;
