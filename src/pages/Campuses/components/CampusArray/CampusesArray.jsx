@@ -19,8 +19,11 @@ class Campuses extends React.Component {
           return (
             <Campus
               key={index}
+              id = {campus.id}
               studentsNumber={index + 1}
               campusName={campus.name}
+              campusAddress = {campus.address}
+              campusDescription = {campus.description}
             />
           );
         })}
