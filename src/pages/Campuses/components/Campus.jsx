@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 
-const PokemonCard = (props) => (
+const Campus = (props) => (
   <div className="container">
-    <br />
-    <div className="campusCard">
-      <div className="idNum">number:{props.number}</div>
-      <div className="campusName">Campus:{props.name}</div>
+    <div className="pokemonCard">
+      <div className="campusName">{props.campusName}</div>
+      <div className="studentsNumber">{props.studentsNumber} students</div>
+      {/* <div className="campusImage">{props.campusImage}</div> */}
     </div>
     <br />
   </div>
 );
 
-export default PokemonCard;
+export default Campus;

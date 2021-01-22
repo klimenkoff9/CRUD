@@ -22,7 +22,8 @@ export const getAllCampuses = () => {
     console.log('ABOUT TO THUNK');
     return async (dispatch) => {
       try {
-        const {data} = await axios.get(`http://localhost:8080/`);
+        const data = [{ name: "Brooklyn" }, {name: "Baruch"}, {name:"Hunter"}, {name: "City"}, {name:"Queens"}]
+        // await axios.get(`http://localhost:8080/`);
   
         console.log('WE WANT THIS RESPONSE', data);
   
@@ -41,7 +42,7 @@ const rootReducer = (state = initialState, action) => {
   console.log('action', action);
   switch (action.type) {
     case GOT_ALL_CAMPUSES:
-      return { ...state, pokemonNames: action.payload };
+      return { ...state, campuses: action.payload };
     default:
       return state;
   }
