@@ -6,8 +6,9 @@ const Campuses = () => {
   return (
     <div className="Contact">
       <article>
+      <AddCampus />
         <CampusesArray />
-        <AddCampus />
+       
       </article>
     </div>
   );
