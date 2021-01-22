@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import { connect } from 'react-redux';
-import { getSingleCampus } from '../../../../redux/reducers/index';
+import { getSingleCampus, postSingleStudent } from '../../../../redux/reducers/index';
 
 import Student from "../../../Students/Student.jsx"
 import "./campusInfo.css";
@@ -17,7 +18,9 @@ class CampusInfo extends Component {
             description: '',
             students: [],
             addStudent: false,
-            studentName: ""
+            studentName: "",
+            email: "",
+            gpa: 0
         }
     }
 
@@ -35,7 +38,7 @@ class CampusInfo extends Component {
                 address: item.address,
                 imageUrl: item.imageUrl,
                 description: item.description,
-                students : item.students
+                students: item.students
             } )
         } )
     }
@@ -47,17 +50,18 @@ class CampusInfo extends Component {
     }
 
     handleAddStudentSubmit = () => {
-        let arr = this.state.students;
         let nameArr = this.state.studentName.split( " " );
         let obj = {
             firstName: nameArr[ 0 ],
             lastName: nameArr[ 1 ],
-            campusname: this.state.campusName
+            email: this.state.email,
+            gpa: this.state.gpa,
+            campusId: this.state.id
         }
-        arr.push( obj )
         this.setState( {
-            students: arr
+            addStudent: false
         } )
+        this.props.postSingleStudent(obj);
     }
 
     render () {
@@ -83,11 +87,20 @@ class CampusInfo extends Component {
                         <form>
                             <label>
                                 Student Name
-                                <input type="text" placeholder={ "firstname lastname" } onChange={ e => this.setState( { studentName: e.target.value } ) }></input>
+                                <input type="text" placeholder={ "firstname lastname" } name="studentName" onChange={ e => this.setState( { [ e.target.name ]: e.target.value } ) }></input>
                             </label>
-                            <button onClick={ this.handleAddStudentSubmit }>Add Student</button>
-                            <button onClick={ e => this.setState( { addStudent: false } ) }>Cancel</button>
+                            <label>
+                                Email
+                                <input type="text" placeholder={ "firstlast@email.com" } name="email" onChange={ e => this.setState( { [ e.target.name ]: e.target.value } ) }></input>
+                            </label>
+                            <label>
+                                GPA
+                                <input type="decimal" placeholder={ "0-4" } name="gpa" onChange={ e => this.setState( { [ e.target.name ]: e.target.value } ) }></input>
+                            </label>
+
                         </form>
+                        <button onClick={ this.handleAddStudentSubmit }>Add Student</button>
+                        <button onClick={ e => this.setState( { addStudent: false } ) }>Cancel</button>
                     </div> :
                     ( this.state.students.length > 0 ? <div className="student-on-campus">
 
@@ -113,7 +126,7 @@ class CampusInfo extends Component {
                             <button>Add Student</button>
                         </div>
                     ) }
-                {console.log(this.state.students)}
+                {console.log( this.state.students ) }
             </div>
         )
     }
@@ -129,6 +142,7 @@ const mapDispatchToProps = ( dispatch ) => {
     console.log( 'Map dispatching to props..' );
     return {
         getSingleCampus: ( name ) => dispatch( getSingleCampus( name ) ),
+        postSingleStudent : (studentObj) => dispatch(postSingleStudent(studentObj)),
     };
 };
 

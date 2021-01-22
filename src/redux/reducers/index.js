@@ -60,6 +60,20 @@ export const getSingleCampus = (campusName) => {
 	}
 }
 
+export const postSingleStudent = (studentObj) => {
+	console.log("ABOUT TO THUNK TO ADD SINGLE STUDENT");
+	return async (dispatch) => {
+		try {
+			await axios.post(`http://localhost:8080/api/student`, studentObj)
+			.then(response => {
+				console.log(response)
+			})
+		} catch (error) {
+			console.error(error);
+		}
+	}
+}
+
 const rootReducer = (state = initialState, action) => {
 	console.log("REDUCER IS PROCESSING DISPATCHED ACTION");
 	console.log("state", state);
