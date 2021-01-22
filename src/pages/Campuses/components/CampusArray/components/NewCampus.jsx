@@ -1,8 +1,6 @@
 import React from "react";
 
-import { Switch, Route, Link } from 'react-router-dom';
-
-import CampusInfo from "../components/Campus-info/campusInfo"
+import { Link } from 'react-router-dom';
 
 const Campus = ( props ) => {
   return (

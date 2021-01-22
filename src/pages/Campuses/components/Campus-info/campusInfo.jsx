@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getSingleCampus } from '../../../../../../redux/reducers/index';
+import { getSingleCampus } from '../../../../redux/reducers/index';
 
 import "./campusInfo.css";
 
