@@ -1,6 +1,6 @@
 import React from "react";
 
-import CampusesArray from "./components/CampusesArray";
+import CampusesArray from "./components/CampusArray/CampusesArray";
 
 const Campuses = () => {
   return (
