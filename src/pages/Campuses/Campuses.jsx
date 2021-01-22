@@ -1,31 +1,15 @@
-import React, { Component } from "react";
-import { connect } from 'react-redux';
-import { fetchAllCampusesThunk, FETCH_ALL_CAMPUSES } from "../../store/utilities/allCampuses";
+import React from "react";
 
-class Campuses extends Component {
-  render () {
-    return (
-      <div>
-        <h1>Hello Campuses</h1>
-      </div>
-    )
-  }
+import CampusesArray from "./components/CampusesArray";
+
+const Campuses = () => {
+  return (
+    <div className="Contact">
+      <article>
+        <CampusesArray />
+      </article>
+    </div>
+  );
 };
 
-const matchStateToProps = (state) => {
-  console.log( `MATCH STATE TO PROPS` );
-  return{
-    campuses : state.campuses
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  console.log(`MAP DISPATCH TO PROPS`);
-  return {
-    getAllCampuses : () => dispatch(fetchAllCampusesThunk())
-  }
-}
-
-
-
-export default connect( matchStateToProps, mapDispatchToProps )( Campuses );
+export default Campuses;
