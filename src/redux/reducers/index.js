@@ -22,7 +22,7 @@ export const getAllCampuses = () => {
     console.log('ABOUT TO THUNK');
     return async (dispatch) => {
       try {
-        const data = [{ name: "Brooklyn" }, {name: "Baruch"}, {name:"Hunter"}, {name: "City"}, {name:"Queens"}]
+        const data = [{ name: "Brooklyn" }, {name: "Baruch"}, {name:"Hunter"}, {name: "City"}, {name:"Queens"}, {name: "Lehman"}]
         // await axios.get(`http://localhost:8080/`);
   
         console.log('WE WANT THIS RESPONSE', data);

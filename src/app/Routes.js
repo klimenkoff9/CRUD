@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Campuses from "../pages/Campuses/Campuses"
+import Campuses from "../pages/Campuses/components/CampusArray/CampusesArray"
 import Home from "../pages/Home/Home";
 
 const Routes = () => {
