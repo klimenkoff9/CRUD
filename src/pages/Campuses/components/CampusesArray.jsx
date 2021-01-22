@@ -1,5 +1,4 @@
 import React from "react";
-
 import { connect } from 'react-redux';
 import { getAllCampuses } from '../../../redux/reducers/index.js';
 
