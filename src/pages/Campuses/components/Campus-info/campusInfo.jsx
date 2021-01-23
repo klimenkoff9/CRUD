@@ -62,7 +62,12 @@ class CampusInfo extends Component {
         this.setState( {
             addStudent: false
         } )
+        console.log("ABOUT TO POST STUDENT TO DATABSE")
         this.props.postSingleStudent(obj);
+        console.log("POSTED STUDENT");
+        console.log("ABOUT TO GET SINGLE CAMPUS");
+        this.props.getSingleCampus(this.state.id);
+        console.log("RETREIVED SINGLE CMAPUS");
     }
 
     render () {
