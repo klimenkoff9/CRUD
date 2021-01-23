@@ -3,7 +3,7 @@ import React from "react";
 import { connect } from 'react-redux';
 import { getAllCampuses } from '../../../../redux/reducers/index.js';
 
-import Campus from "./components/NewCampus"
+import Campus from "../NewCampus/NewCampus"
 
 class Campuses extends React.Component {
     async componentDidMount() {
