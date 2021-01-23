@@ -1,3 +1,4 @@
+/* OBSOLETE
 import axios from 'axios';
 
 // ACTION TYPES;
@@ -35,3 +36,4 @@ const reducer = (state = initialState, action) => {
 }
 
 export default reducer;
+ */

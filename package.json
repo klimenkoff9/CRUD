@@ -6,12 +6,20 @@
     "axios": "^0.21.1",
     "bootstrap": "^5.0.0-beta1",
     "prop-types": "^15.6.2",
+<<<<<<< HEAD
     "react": "^16.6.0",
     "react-bootstrap": "^1.4.3",
     "react-dom": "^16.6.0",
     "react-redux": "^5.1.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.0.5",
+=======
+    "react": "^17.0.1",
+    "react-dom": "^16.6.0",
+    "react-redux": "^5.1.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "2.0.5",
+>>>>>>> 2af6e6d30df12a2bea93190341f22bade69892e0
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.5",
     "redux-logger": "^3.0.6",
