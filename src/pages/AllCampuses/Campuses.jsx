@@ -4,7 +4,7 @@ import CampusesArray from "./components/CampusArray/CampusesArray";
 
 const Campuses = () => {
   return (
-    <div className="Contact">
+    <div className="campuses">
       <article>
         <CampusesArray />
       </article>

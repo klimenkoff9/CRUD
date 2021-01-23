@@ -3,4 +3,4 @@ export const GOT_SINGLE_CAMPUS = "GOT_SINGLE_CAMPUS";
 
 // students
 export const GOT_SINGLE_STUDENT = "GOT_SINGLE_STUDENT";
-// export const GOT_ALL_STUDENTS = "GOT_ALL_CAMPUSES"
+export const GOT_ALL_STUDENTS = "GOT_ALL_STUDENTS"

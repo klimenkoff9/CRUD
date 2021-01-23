@@ -3,13 +3,14 @@ import axios from "axios";
 import { bindActionCreators } from "redux";
 
 //Action Types
-import { GOT_ALL_CAMPUSES, GOT_SINGLE_CAMPUS, GOT_SINGLE_STUDENT } from "./actionTypes";
+import { GOT_ALL_CAMPUSES, GOT_SINGLE_CAMPUS, GOT_SINGLE_STUDENT, GOT_ALL_STUDENTS } from "./actionTypes";
 
 //Initial State-- Look at stateful components and transfer over
 const initialState = {
 	campuses: [],
 	campus : [],
-	student : []
+    student : [],
+    students: []
 }
 //Action Creators
 const gotAllCampuses = (payload) => ({
@@ -27,6 +28,11 @@ const gotSingleStudent = (payload) => ({
 	type: GOT_SINGLE_STUDENT,
 	payload,
 })
+
+const gotAllStudents = (payload) => ({
+	type: GOT_ALL_STUDENTS,
+	payload,
+});
 //Thunks - Just action creators that take a function
 
 export const getAllCampuses = () => {
@@ -53,11 +59,11 @@ export const getAllCampuses = () => {
 	};
 };
 
-export const getSingleCampus = (campusName) => {
+export const getSingleCampus = (id) => {
 	console.log("ABOUT TO THUNK FOR SINGLE CAMPUS");
 	return async (dispatch) => {
 		try {
-			const {data} = await axios.get(`http://localhost:8080/api/campus/${campusName}`);
+			const {data} = await axios.get(`http://localhost:8080/api/campus/${id}`);
 			console.log("WE WANT THIS SINGLE RESPONSE", data);
 			console.log("ABOUT TO DISPATCH DATA");
 			dispatch(gotSingleCampus(data));
@@ -96,6 +102,22 @@ export const postSingleStudent = (studentObj) => {
 	}
 }
 
+export const getAllStudents = () => {
+	console.log("ABOUT TO THUNK");
+	return async (dispatch) => {
+		try {
+			const {data} = await axios.get(`http://localhost:8080/api/student`);
+
+			console.log("WE WANT THIS RESPONSE", data);
+
+			console.log("ABOUT TO DISPATCH DATA");
+			dispatch(gotAllStudents(data));
+		} catch (error) {
+			console.error(error);
+		}
+	};
+};
+
 const rootReducer = (state = initialState, action) => {
 	console.log("REDUCER IS PROCESSING DISPATCHED ACTION");
 	console.log("state", state);
@@ -106,7 +128,9 @@ const rootReducer = (state = initialState, action) => {
 		case GOT_SINGLE_CAMPUS:
 			return {...state, campus : action.payload};
 		case GOT_SINGLE_STUDENT:
-			return {...state, student: action.payload};
+            return {...state, student: action.payload};
+        case GOT_ALL_STUDENTS:
+            return {...state, students: action.payload};
 		default:
 			return state;
 	}
