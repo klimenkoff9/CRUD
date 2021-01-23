@@ -63,7 +63,18 @@ class CampusInfo extends Component {
             addStudent: false
         } )
         this.props.postSingleStudent(obj);
+        this.props.history.push("/campuses/${this.state.id}");
     }
+
+    handleDelete = async () => {
+        console.log(this.props.history);
+        try {
+          await axios.get(`http://localhost:8080/api/campus/${this.state.id}/delete`);
+          this.props.history.push("/campuses/");
+        } catch (error) {
+          console.log(error);
+        }
+      };
 
     render () {
         return (
@@ -80,7 +91,7 @@ class CampusInfo extends Component {
                 <div className="row2">
                     <h3>{ this.state.address }</h3>
                     <button>EDIT</button>
-                    <button>DELETE</button>
+                    <button onClick = {()=> this.handleDelete()}>DELETE</button>
                 </div>
                 <h1>Students On Campus</h1>
                 {this.state.addStudent ?
