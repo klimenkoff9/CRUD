@@ -20,7 +20,7 @@ class Campuses extends React.Component {
             <Campus
               key={index}
               id = {campus.id}
-              studentsNumber={index + 1}
+              studentsNumber={campus.students.length}
               campusName={campus.name}
               campusAddress = {campus.address}
               campusDescription = {campus.description}

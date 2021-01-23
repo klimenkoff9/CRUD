@@ -2,14 +2,14 @@ import React from "react";
 
 import CampusInfo from "./components/CampusInfo/CampusInfo";
 
-const Campuses = (props) => {
+const Campuses = ( props ) => {
 
-const { match: { params: { CampusName } } } = props;
+  const { match: { params: { id } } } = props;
 
   return (
     <div className="Contact">
       <article>
-        <CampusInfo campusName={CampusName}/>
+        <CampusInfo campusId={ id } />
       </article>
     </div>
   );

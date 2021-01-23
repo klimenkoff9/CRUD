@@ -4,21 +4,20 @@ import { connect } from 'react-redux';
 import { getSingleCampus, postSingleStudent } from '../../../../redux/reducers/index';
 
 import Student from "../../../Students/Student.jsx"
-import "./campusInfo.css";
+//import "./campusInfo.css";
 
 class CampusInfo extends Component {
 
     constructor ( props ) {
         super( props );
         this.state = {
-            students: [],
+            students: this.props.studentList,
             addStudent: false,
             studentName: "",
             email: "",
             gpa: 0
         }
     }
-
 
     handleAddStudent = () => {
         console.log("about to add student")
