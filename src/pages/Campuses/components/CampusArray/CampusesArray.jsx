@@ -6,6 +6,7 @@ import { getAllCampuses } from '../../../../redux/reducers/index.js';
 import Campus from "./components/NewCampus"
 
 class Campuses extends React.Component {
+  
     async componentDidMount() {
     console.log('component did mount');
     await this.props.getAllCampuses();
