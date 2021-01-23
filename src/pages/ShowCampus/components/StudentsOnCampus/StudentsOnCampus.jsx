@@ -11,11 +11,6 @@ class CampusInfo extends Component {
     constructor ( props ) {
         super( props );
         this.state = {
-            campusName: '',
-            id: 0,
-            address: '',
-            imageUrl: '',
-            description: '',
             students: [],
             addStudent: false,
             studentName: "",
@@ -24,24 +19,6 @@ class CampusInfo extends Component {
         }
     }
 
-    async componentDidMount () {
-        console.log( 'component did mount' );
-        console.log( "props of component" + this.props );
-        const { match: { params: { id } } } = this.props;
-        console.log( `this is the campus id: ${id}` );
-        await this.props.getSingleCampus( id )
-        console.log( `this is the campus data ${id}` );
-        this.props.campus.map( ( item ) => {
-            this.setState( {
-                id: id,
-                campusName: item.name,
-                address: item.address,
-                imageUrl: item.imageUrl,
-                description: item.description,
-                students: item.students
-            } )
-        } )
-    }
 
     handleAddStudent = () => {
         console.log("about to add student")
@@ -73,20 +50,6 @@ class CampusInfo extends Component {
     render () {
         return (
             <div>
-                <div className="row">
-                    <div className="column">
-                        <img src={ this.state.imageUrl } alt="campus image" width="400px" height="300px"></img>
-                    </div>
-                    <div className="column">
-                        <h1>ID: { this.state.id } | { this.state.campusName }</h1>
-                        <p>{ this.state.description }</p>
-                    </div>
-                </div>
-                <div className="row2">
-                    <h3>{ this.state.address }</h3>
-                    <button>EDIT</button>
-                    <button>DELETE</button>
-                </div>
                 <h1>Students On Campus</h1>
                 {this.state.addStudent ?
                     <div>
@@ -149,7 +112,6 @@ const mapStateToProps = ( state ) => {
 const mapDispatchToProps = ( dispatch ) => {
     console.log( 'Map dispatching to props..' );
     return {
-        getSingleCampus: ( name ) => dispatch( getSingleCampus( name ) ),
         postSingleStudent : (studentObj) => dispatch(postSingleStudent(studentObj)),
     };
 };
