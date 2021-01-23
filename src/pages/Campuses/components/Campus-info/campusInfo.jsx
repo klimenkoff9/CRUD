@@ -27,13 +27,13 @@ class CampusInfo extends Component {
     async componentDidMount () {
         console.log( 'component did mount' );
         console.log( "props of component" + this.props );
-        const { match: { params: { CampusName } } } = this.props;
-        console.log( `this is the campus name ${CampusName}` );
-        await this.props.getSingleCampus( CampusName )
-        console.log( `this is the campus data ${CampusName}` );
+        const { match: { params: { id } } } = this.props;
+        console.log( `this is the campus id: ${id}` );
+        await this.props.getSingleCampus( id )
+        console.log( `this is the campus data ${id}` );
         this.props.campus.map( ( item ) => {
             this.setState( {
-                id: item.id,
+                id: id,
                 campusName: item.name,
                 address: item.address,
                 imageUrl: item.imageUrl,
@@ -44,6 +44,7 @@ class CampusInfo extends Component {
     }
 
     handleAddStudent = () => {
+        console.log("about to add student")
         this.setState( {
             addStudent: !this.state.addStudent
         } )
@@ -109,6 +110,8 @@ class CampusInfo extends Component {
                             { this.state.students.map( ( student, index ) => {
                                 return (
                                     <Student
+                                        key = {index}
+                                        StudentId = {student.id}
                                         campusId={ this.state.id }
                                         campusname={ this.state.campusName }
                                         firstName={ student.firstName }
@@ -123,7 +126,7 @@ class CampusInfo extends Component {
                     </div> :
                         <div className="no-student-on-campus">
                             <h3>There are no students currently registered to this campus</h3>
-                            <button>Add Student</button>
+                            <button onClick={ this.handleAddStudent }>Add Student</button>
                         </div>
                     ) }
                 {console.log( this.state.students ) }
