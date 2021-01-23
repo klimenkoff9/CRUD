@@ -4,21 +4,20 @@ import { connect } from 'react-redux';
 import { getSingleCampus, postSingleStudent } from '../../../../redux/reducers/index';
 
 import Student from "../../../Students/Student.jsx"
-import "./campusInfo.css";
+//import "./campusInfo.css";
 
 class CampusInfo extends Component {
 
     constructor ( props ) {
         super( props );
         this.state = {
-            students: [],
+            students: this.props.studentList,
             addStudent: false,
             studentName: "",
             email: "",
             gpa: 0
         }
     }
-
 
     handleAddStudent = () => {
         console.log("about to add student")
@@ -39,7 +38,12 @@ class CampusInfo extends Component {
         this.setState( {
             addStudent: false
         } )
+        console.log("ABOUT TO POST STUDENT TO DATABSE")
         this.props.postSingleStudent(obj);
+        console.log("POSTED STUDENT");
+        console.log("ABOUT TO GET SINGLE CAMPUS");
+        this.props.getSingleCampus(this.state.id);
+        console.log("RETREIVED SINGLE CMAPUS");
     }
 
     render () {

@@ -3,6 +3,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 
+import CampusInfo  from "../../StudentsOnCampus/StudentsOnCampus"
 import "./ShowCampusInfo.css";
 
 const ShowCampusInfo = (props) => {
@@ -21,7 +22,7 @@ const ShowCampusInfo = (props) => {
       <div className="row">
         <div className="column">
           <img
-            src={props.imageUrl}
+            src={props.campusImage}
             alt="campus image"
             width="400px"
             height="300px"
@@ -31,14 +32,16 @@ const ShowCampusInfo = (props) => {
           <h1>
             ID: {props.id} | {props.campusName}
           </h1>
-          <p>{props.description}</p>
+          <p>{props.campusDescription}</p>
         </div>
       </div>
       <div className="row2">
-        <h3>{props.address}</h3>
+        <h3>{props.campusAddress}</h3>
         <button>EDIT</button>
         <button onClick={() => handleDelete()}>DELETE</button>
       </div>
+      <br></br>
+      <CampusInfo studentList = {props.students}/>
     </div>
   );
 };
