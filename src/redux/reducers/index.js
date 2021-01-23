@@ -1,13 +1,15 @@
 //imports
 import axios from "axios";
+import { bindActionCreators } from "redux";
 
 //Action Types
-import { GOT_ALL_CAMPUSES, GOT_SINGLE_CAMPUS } from "./actionTypes";
+import { GOT_ALL_CAMPUSES, GOT_SINGLE_CAMPUS, GOT_SINGLE_STUDENT } from "./actionTypes";
 
 //Initial State-- Look at stateful components and transfer over
 const initialState = {
 	campuses: [],
-	campus : []
+	campus : [],
+	student : []
 }
 //Action Creators
 const gotAllCampuses = (payload) => ({
@@ -20,6 +22,11 @@ const gotSingleCampus = (payload) => ({
 	payload,
 })
 
+// action creator for single student
+const gotSingleStudent = (payload) => ({
+	type: GOT_SINGLE_STUDENT,
+	payload,
+})
 //Thunks - Just action creators that take a function
 
 export const getAllCampuses = () => {
@@ -60,6 +67,21 @@ export const getSingleCampus = (campusName) => {
 	}
 }
 
+// thunk to get single student by id
+export const getSingleStudent = (id) => {
+	console.log("ABOUT TO THUNK TO GET SINGLE STUDENT");
+	return async(dispatch) => {
+		try {
+			const {data} = await axios.get(`http://localhost:8080/api/student/${id}`)
+			console.log("WE WANT THIS SINGLE RESPONSE: " + data.student);
+			console.log("ABOUT TO DISPATCH DATA");
+			dispatch(gotSingleStudent(data.student));
+		} catch (error) {
+			console.error(error);
+		}
+	}
+}
+// think to post a student to student table in database
 export const postSingleStudent = (studentObj) => {
 	console.log("ABOUT TO THUNK TO ADD SINGLE STUDENT");
 	return async (dispatch) => {
@@ -83,6 +105,8 @@ const rootReducer = (state = initialState, action) => {
 			return { ...state, campuses: action.payload };
 		case GOT_SINGLE_CAMPUS:
 			return {...state, campus : action.payload};
+		case GOT_SINGLE_STUDENT:
+			return {...state, student: action.payload};
 		default:
 			return state;
 	}

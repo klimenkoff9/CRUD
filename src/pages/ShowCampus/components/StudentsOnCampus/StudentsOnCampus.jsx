@@ -19,9 +19,6 @@ class CampusInfo extends Component {
         }
     }
 
-    async componentDidMount () {
-       
-    }
 
     handleAddStudent = () => {
         console.log("about to add student")
