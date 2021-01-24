@@ -1,5 +1,5 @@
 import React from 'react';
-import StudentInfo from "./components/StudentInfo"
+import StudentInfo from "./components/StudentInfo/StudentInfo"
 
 
 const Student = (props) => {
