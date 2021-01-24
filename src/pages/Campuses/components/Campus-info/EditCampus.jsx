@@ -4,18 +4,40 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import StudentList from './studentlist.jsx'
+import { connect } from 'react-redux';
+import { getSingleCampus, postSingleStudent } from '../../../../redux/reducers/index';
 
 
 class editCampus extends Component{
     constructor(props){
         super(props);
         this.state ={
-            image:"",
+            id : 0,
+            image: "",
             name:"",
             location:"",
             description:"",
-            testArray:["bob","mary","joe","betty","sally","fred","chris","larry"]
+            testArray:["bob","mary","joe","betty","sally","fred","chris","larry"],
+            studentArr:[]
         }
+    }
+    async componentDidMount () {
+        console.log( 'component did mount' );
+        console.log( "props of component" + this.props );
+        //const { match: { params: { 1 } } } = this.props;
+        console.log( `this is the campus id: ${1}` );
+        await this.props.getSingleCampus( 1 )
+        console.log( `this is the campus data ${1}` );
+        this.props.campus.map( ( item ) => {
+            this.setState( {
+                id: 1,
+                name: item.name,
+                location: item.address,
+                image: item.imageUrl,
+                description: item.description,
+                studentArr: item.students
+            } )
+        } )
     }
     handleChange=(e)=>{
         this.setState({
@@ -25,7 +47,7 @@ class editCampus extends Component{
     onSubmit=(e)=>{
         alert("state: "+this.state.image+"\n" +
             this.state.name+"\n"
-            +this.state.location+"\n"+this.state.description);
+            +this.state.location+"\n"+this.state.description+"\n student arr: "+this.state.studentArr);
         this.updateCampus();
         //clear state
         // this.setState({image:"",
@@ -35,7 +57,15 @@ class editCampus extends Component{
         e.preventDefault();
     }
     async updateCampus(){
-        const campus = await axios.post(`http://localhost8080/api/campus/1`,{name: this.state.name})
+        const campus = await axios.put(`http://localhost:8080/api/campus/1`,{
+            name: this.state.name,
+            imageURL: this.state.image,
+            address: this.state.location
+        
+        })
+        .then(function (response) {
+            console.log(response);
+        })
         console.log(campus);
     }
     render(){
@@ -64,8 +94,22 @@ class editCampus extends Component{
 
            </Form>
 
-            <StudentList student = {this.state.testArray}/>
+            <StudentList student = {this.state.studentArr}/>
         </div> 
     )}
 }
-export default editCampus;
+const mapStateToProps = ( state ) => {
+    console.log( 'Map state to props..' );
+    return {
+        campus: state.campus,
+    };
+};
+
+const mapDispatchToProps = ( dispatch ) => {
+    console.log( 'Map dispatching to props..' );
+    return {
+        getSingleCampus: ( name ) => dispatch( getSingleCampus( name ) ),
+        postSingleStudent : (studentObj) => dispatch(postSingleStudent(studentObj)),
+    };
+};
+export default connect( mapStateToProps, mapDispatchToProps )(editCampus);

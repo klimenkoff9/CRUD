@@ -37,7 +37,7 @@ class student extends Component{
                     <Form.Label>Students on Campus</Form.Label>
                         <Form.Control as="select" onChange={this.handleChange}>             
                             {this.props.student.map((student,index)=>{                  
-                                return <option value ={index}>{index} {student}</option>
+                                return <option value ={index}>{index} {student.firstName}</option>
                             })}
                         </Form.Control>                 
                 </Form.Group>

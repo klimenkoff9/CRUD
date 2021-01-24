@@ -7,7 +7,7 @@ import CampusInfo from "../pages/Campuses/components/Campus-info/campusInfo.jsx"
 import StudentInfo from "../pages/Students/StudentInfo/studentInfo.jsx";
 
 //edit Campus placeholder
-import EditCampus from "../pages/Campuses/components/CampusArray/components/EditCampus.jsx"
+import EditCampus from "../pages/Campuses/components/Campus-info/EditCampus.jsx"
 const Routes = () => {
 	return (
 		<Switch>
