@@ -1,10 +1,12 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 
-import Campuses from "../pages/Campuses/Campuses.jsx";
+import AllCampuses from "../pages/AllCampuses/Campuses.jsx";
 import Home from "../pages/Home/Home";
-import CampusInfo from "../pages/Campuses/components/Campus-info/campusInfo.jsx";
-import StudentInfo from "../pages/Students/StudentInfo/studentInfo.jsx";
+import ShowCampus from "../pages/ShowCampus/ShowCampus";
+import Student from "../pages/Students/StudentInfo/studentInfo.jsx"
+
+import AllStudents from "../pages/AllStudents/Students"
 
 const Routes = () => {
 	return (
@@ -13,10 +15,13 @@ const Routes = () => {
 				<Home />
 			</Route>
 			<Route exact path="/campuses">
-				<Campuses />
+				<AllCampuses />
 			</Route>
-      <Route path="/campuses/:id" component = {CampusInfo} />
-	  <Route path="/student/:StudentId" component = {StudentInfo} />
+			<Route path="/campuses/:id" component = {ShowCampus} />
+			<Route path = "/students">
+				<AllStudents />
+			</Route>
+	  <Route path = "/student/:StudentId" component = {Student}/>
 		</Switch>
 	);
 };
