@@ -6,9 +6,9 @@ const Campuses = () => {
   return (
     <div className="campuses">
       <article>
+      <Link to = '/addcampus'><button>Add Campus</button> </Link>
         <CampusesArray />
       </article>
-      <Link to = '../addcampus'> Add Campus </Link>
     </div>
   );
 };

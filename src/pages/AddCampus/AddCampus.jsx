@@ -19,19 +19,15 @@ class AddCampus extends React.Component {
       }
     
       async handleSubmit(event) {
-        alert('The Campus ' + this.state.value + " has been added.");
         event.preventDefault();
-
-        const res = await axios.post('http://localhost:8080/api/campus', {
-            name: this.state.value,
+        try {
+        await axios.post('http://localhost:8080/api/campus', {
+          name: this.state.value,
         })
-        .then(function (response) {
-            console.log(response);
-        })
-
-      
         this.props.history.push("/campuses");
-       
+        } catch (error) {
+         console.error(error); 
+        } 
       } 
 
     render(){
