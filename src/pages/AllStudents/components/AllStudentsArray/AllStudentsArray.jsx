@@ -3,7 +3,7 @@ import React from "react";
 import { connect } from 'react-redux';
 import { getAllStudents } from '../../../../redux/reducers/index.js';
 
-import PrintAllStudents from "../PrintAllStudents/PrintAllStudents"
+import PrintAllStudents from '../PrintAllStudents/PrintAllStudents.jsx';
 
 class AllStudentsArray extends React.Component {
     async componentDidMount() {
