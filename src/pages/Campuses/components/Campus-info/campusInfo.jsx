@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { getSingleCampus, postSingleStudent } from '../../../../redux/reducers/index';
+import { Link } from "react-router-dom";
+import { getSingleCampus } from '../../../../redux/reducers/index';
 
-import Student from "../../../Students/Student.jsx"
+import Student from "../../../Students/Student.jsx";
 import "./campusInfo.css";
+
 
 class CampusInfo extends Component {
 
@@ -17,10 +19,7 @@ class CampusInfo extends Component {
             imageUrl: '',
             description: '',
             students: [],
-            addStudent: false,
-            studentName: "",
-            email: "",
-            gpa: 0
+            addStudent: true
         }
     }
 
@@ -43,38 +42,15 @@ class CampusInfo extends Component {
         } )
     }
 
-    handleAddStudent = () => {
-        console.log("about to add student")
-        this.setState( {
-            addStudent: !this.state.addStudent
-        } )
-    }
-
-    handleAddStudentSubmit = () => {
-        let nameArr = this.state.studentName.split( " " );
-        let obj = {
-            firstName: nameArr[ 0 ],
-            lastName: nameArr[ 1 ],
-            email: this.state.email,
-            gpa: this.state.gpa,
-            campusId: this.state.id
-        }
-        this.setState( {
-            addStudent: false
-        } )
-        this.props.postSingleStudent(obj);
-        this.props.history.push("/campuses/${this.state.id}");
-    }
-
     handleDelete = async () => {
-        console.log(this.props.history);
+        console.log( this.props.history );
         try {
-          await axios.get(`http://localhost:8080/api/campus/${this.state.id}/delete`);
-          this.props.history.push("/campuses/");
-        } catch (error) {
-          console.log(error);
+            await axios.get( `http://localhost:8080/api/campus/${this.state.id}/delete` );
+            this.props.history.push( "/campuses/" );
+        } catch ( error ) {
+            console.log( error );
         }
-      };
+    };
 
     render () {
         return (
@@ -91,57 +67,37 @@ class CampusInfo extends Component {
                 <div className="row2">
                     <h3>{ this.state.address }</h3>
                     <button>EDIT</button>
-                    <button onClick = {()=> this.handleDelete()}>DELETE</button>
+                    <button onClick={ () => this.handleDelete() }>DELETE</button>
                 </div>
                 <h1>Students On Campus</h1>
-                {this.state.addStudent ?
+                { ( this.state.students.length > 0 ? <div className="student-on-campus">
+                    {{/* CREATED A LINK TO RENDER THE ADD STUDENT COMPONENT WITH CAMPUS ID TO PASS AS PROPS TO ADD STUDENT COMPONENT. IF USED ELSEWHERE, CREATE A DIFFERENT ROUTE */}}
+                    <Link to = {`/AddStudent/${this.state.id}`}><button>ADD STUDENT</button></Link>
                     <div>
-                        <form>
-                            <label>
-                                Student Name
-                                <input type="text" placeholder={ "firstname lastname" } name="studentName" onChange={ e => this.setState( { [ e.target.name ]: e.target.value } ) }></input>
-                            </label>
-                            <label>
-                                Email
-                                <input type="text" placeholder={ "firstlast@email.com" } name="email" onChange={ e => this.setState( { [ e.target.name ]: e.target.value } ) }></input>
-                            </label>
-                            <label>
-                                GPA
-                                <input type="decimal" placeholder={ "0-4" } name="gpa" onChange={ e => this.setState( { [ e.target.name ]: e.target.value } ) }></input>
-                            </label>
-
-                        </form>
-                        <button onClick={ this.handleAddStudentSubmit }>Add Student</button>
-                        <button onClick={ e => this.setState( { addStudent: false } ) }>Cancel</button>
-                    </div> :
-                    ( this.state.students.length > 0 ? <div className="student-on-campus">
-
-                        <button onClick={ this.handleAddStudent }>Add Student</button>
-                        <div>
-                            { this.state.students.map( ( student, index ) => {
-                                return (
-                                    <Student
-                                        key = {index}
-                                        StudentId = {student.id}
-                                        campusId={ this.state.id }
-                                        campusname={ this.state.campusName }
-                                        firstName={ student.firstName }
-                                        lastName={ student.lastName }
-                                        imageUrl={ student.imageUrl }
-                                        gpa={ student.gpa }
-                                        email={ student.email }
-                                    />
-                                )
-                            } ) }
-                        </div>
-                    </div> :
-                        <div className="no-student-on-campus">
-                            <h3>There are no students currently registered to this campus</h3>
-                            <button onClick={ this.handleAddStudent }>Add Student</button>
-                        </div>
-                    ) }
-                {console.log( this.state.students ) }
-            </div>
+                        { this.state.students.map( ( student, index ) => {
+                            return (
+                                <Student
+                                    key={ index }
+                                    StudentId={ student.id }
+                                    campusId={ this.state.id }
+                                    campusname={ this.state.campusName }
+                                    firstName={ student.firstName }
+                                    lastName={ student.lastName }
+                                    imageUrl={ student.imageUrl }
+                                    gpa={ student.gpa }
+                                    email={ student.email }
+                                />
+                            )
+                        } ) }
+                    </div>
+                </div> :
+                    <div className="no-student-on-campus">
+                        <h3>There are no students currently registered to this campus</h3>
+                        <Link to = {`/AddStudent/${this.state.id}`}><button>ADD STUDENT</button></Link>
+                    </div >
+                )
+                } { console.log( this.state.students ) }
+            </div >
         )
     }
 }
@@ -156,7 +112,6 @@ const mapDispatchToProps = ( dispatch ) => {
     console.log( 'Map dispatching to props..' );
     return {
         getSingleCampus: ( name ) => dispatch( getSingleCampus( name ) ),
-        postSingleStudent : (studentObj) => dispatch(postSingleStudent(studentObj)),
     };
 };
 
