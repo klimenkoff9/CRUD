@@ -5,9 +5,8 @@ import { withRouter } from "react-router-dom";
 
 
 class AddCampus extends React.Component {
-
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             name: '', 
         };
@@ -37,15 +36,12 @@ class AddCampus extends React.Component {
 
     render(){
         return (
-            
             <form onSubmit={this.handleSubmit}>
                <div class = "form-group">
-
                    <div class="col-7">
                    <label for = "campusname"></label>
                    <input type = "username" class="form-control form-control-lg" id="exampleInputPassword1" onChange={this.handleChange} placeholder="Campus Name"></input>
                    </div>  
-
                </div>  
                <div class = "text-center"> 
              <button type="submit" class = "btn btn-primary"> Add Campus</button>

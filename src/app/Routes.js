@@ -5,6 +5,7 @@ import AllCampuses from "../pages/AllCampuses/Campuses.jsx";
 import Home from "../pages/Home/Home";
 import ShowCampus from "../pages/ShowCampus/ShowCampus";
 import Student from "../pages/Students/StudentInfo/studentInfo.jsx"
+import EditCampus from "../pages/EditCampus/EditCampus.jsx"
 
 import AllStudents from "../pages/AllStudents/Students"
 import AddCampus from "../pages/AddCampus/AddCampus.jsx";
@@ -33,6 +34,8 @@ const Routes = () => {
 				
 				<AddCampus/> 
 			</Route>
+			
+			<Route exact path = "/campuses/:id/edit" component={EditCampus}/>
 
 		</Switch>
 	);
