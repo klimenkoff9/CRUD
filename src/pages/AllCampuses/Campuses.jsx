@@ -1,5 +1,5 @@
 import React from "react";
-import AddCampus from "./components/AddCampus/AddCampus.jsx";
+import { Link } from 'react-router-dom';
 import CampusesArray from "./components/CampusArray/CampusesArray";
 
 const Campuses = () => {
@@ -7,8 +7,8 @@ const Campuses = () => {
     <div className="campuses">
       <article>
         <CampusesArray />
-        <AddCampus />
       </article>
+      <Link to = '../addcampus'> Add Campus </Link>
     </div>
   );
 };
