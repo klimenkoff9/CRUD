@@ -24,7 +24,7 @@ class AddCampus extends React.Component {
         await axios.post('http://localhost:8080/api/campus', {
           name: this.state.value,
         })
-        this.props.history.push("/campuses");
+        this.props.history.goBack();
         } catch (error) {
          console.error(error); 
         } 
