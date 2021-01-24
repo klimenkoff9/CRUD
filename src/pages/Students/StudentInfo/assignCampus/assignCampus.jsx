@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getAllCampuses } from "../../../../redux/reducers";
-import axios from 'axios'
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 
 class AssignCampus extends Component {
@@ -14,12 +15,13 @@ class AssignCampus extends Component {
         console.log( "AssignCampus reteived all campuses" )
     }
     handleSubmit = () =>{
-        axios.put(`http://localhost:8080/api/student/${this.props.studentId}`, {campusId : this.state.campusId});
+        axios.put(`http://localhost:8080/api/student/${this.props.studentId}`, {campusId : this.state.campusId}); 
     }
     render () {
         return (
             <div>
-                <select id = "campuses" value = {this.state.campusId} onChange = {e => this.setState({campusId : e.target.value})}>
+                <select id = "campuses" placeholder = {"campus"} value = {this.state.campusId} onChange = {e => this.setState({campusId : e.target.value})}>
+                    <option selected = "campus">Choose a Campus</option>
                     {
                         this.props.campuses.map( ( item, index ) => {
                             return (
@@ -28,7 +30,7 @@ class AssignCampus extends Component {
                         })
                     }
                 </select>
-                <button onClick={() => this.handleSubmit()}>Change Campus</button>
+                <Link to = "/submitted"><button onClick={() => this.handleSubmit()}>Change Campus</button></Link>
             </div>
         )
     }

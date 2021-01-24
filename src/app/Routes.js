@@ -6,6 +6,7 @@ import Home from "../pages/Home/Home";
 import CampusInfo from "../pages/Campuses/components/Campus-info/campusInfo.jsx";
 import StudentInfo from "../pages/Students/StudentInfo/studentInfo.jsx";
 import AddStudent from "../pages/Students/AddStudent";
+import Submitted from "../pages/Submitted/submitted.jsx";
 
 const Routes = () => {
 	return (
@@ -16,6 +17,7 @@ const Routes = () => {
 			<Route exact path="/campuses">
 				<Campuses />
 			</Route>
+			<Route exact path = "/submitted" component={Submitted}/>
 			<Route path="/campuses/:id" component={CampusInfo} />
 			<Route path="/student/:StudentId" component={StudentInfo} />
 			{/* THIS IS THE ROUTE TO ADD STUDENTS IN A CAMPUS */}

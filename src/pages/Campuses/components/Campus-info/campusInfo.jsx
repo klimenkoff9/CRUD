@@ -51,7 +51,7 @@ class CampusInfo extends Component {
             console.log( error );
         }
     };
-
+    /* CREATED A LINK TO RENDER THE ADD STUDENT COMPONENT WITH CAMPUS ID TO PASS AS PROPS TO ADD STUDENT COMPONENT. IF USED ELSEWHERE, CREATE A DIFFERENT ROUTE */
     render () {
         return (
             <div>
@@ -64,14 +64,15 @@ class CampusInfo extends Component {
                         <p>{ this.state.description }</p>
                     </div>
                 </div>
+                <br></br>
                 <div className="row2">
                     <h3>{ this.state.address }</h3>
                     <button>EDIT</button>
                     <button onClick={ () => this.handleDelete() }>DELETE</button>
                 </div>
+                <br></br>
                 <h1>Students On Campus</h1>
                 { ( this.state.students.length > 0 ? <div className="student-on-campus">
-                    {{/* CREATED A LINK TO RENDER THE ADD STUDENT COMPONENT WITH CAMPUS ID TO PASS AS PROPS TO ADD STUDENT COMPONENT. IF USED ELSEWHERE, CREATE A DIFFERENT ROUTE */}}
                     <Link to = {`/AddStudent/${this.state.id}`}><button>ADD STUDENT</button></Link>
                     <div>
                         { this.state.students.map( ( student, index ) => {
@@ -93,6 +94,7 @@ class CampusInfo extends Component {
                 </div> :
                     <div className="no-student-on-campus">
                         <h3>There are no students currently registered to this campus</h3>
+                        <br></br>
                         <Link to = {`/AddStudent/${this.state.id}`}><button>ADD STUDENT</button></Link>
                     </div >
                 )

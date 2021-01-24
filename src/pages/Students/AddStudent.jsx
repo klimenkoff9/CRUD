@@ -95,7 +95,7 @@ class AddStudent extends Component {
                     <span>{ this.state.error.gpa }</span>
                     <br></br>
                 </form>
-                <button onClick={ this.handleAddStudentSubmit }>Add Student</button>
+                <Link to = "/submitted"><button onClick={ this.handleAddStudentSubmit }>Add Student</button></Link>
                 <Link to={ "/" }><button>Cancel</button></Link>
             </div>
         )
