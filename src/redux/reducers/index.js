@@ -69,7 +69,7 @@ export const getSingleCampus = (id) => {
 	console.log("ABOUT TO THUNK FOR SINGLE CAMPUS" + id);
 	return async (dispatch) => {
 		try {
-			const {data} = await axios.get(`http://localhost:8080/api/campus/${id}`);
+			const {data} = await axios.get(`http://localhost:8080/api/campus/nostudent/${id}`);
 			console.log("WE WANT THIS SINGLE RESPONSE", data);
 			console.log("ABOUT TO DISPATCH DATA");
 			dispatch(gotSingleCampus(data));
@@ -99,9 +99,9 @@ export const getSingleStudent = (id) => {
 	return async(dispatch) => {
 		try {
 			const {data} = await axios.get(`http://localhost:8080/api/student/${id}`)
-			console.log("WE WANT THIS SINGLE RESPONSE: " + data);
+			console.log(data.student);
 			console.log("ABOUT TO DISPATCH DATA");
-			dispatch(gotStudentsByCampus(data));
+			dispatch(gotSingleStudent(data.student));
 		} catch (error) {
 			console.error(error);
 		}
