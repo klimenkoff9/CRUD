@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
     "prop-types": "^15.6.2",
     "react": "^17.0.1",
+    "react-bootstrap": "^1.4.3",
     "react-dom": "^16.6.0",
     "react-redux": "^5.1.0",
     "react-router-dom": "^5.2.0",
