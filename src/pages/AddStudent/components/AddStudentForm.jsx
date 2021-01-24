@@ -23,7 +23,7 @@ class AddStudent extends React.Component {
   handleSubmit = async (e) => {
     const {
       match: {
-        params: { campusID, path },
+        params: { campusID },
       },
     } = this.props;
     let obj = {};
@@ -41,8 +41,7 @@ class AddStudent extends React.Component {
     }
     console.log(obj);
     await this.props.postSingleStudent(obj);
-    console.log(path);
-    this.props.history.push(`/students`);
+    this.props.history.goBack();
   };
 
   render() {

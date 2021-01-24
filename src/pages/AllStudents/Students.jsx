@@ -9,7 +9,7 @@ const Students = () => {
   return (
     <div className="students">
       <article>
-        <AddStudent path={path}/>
+        <AddStudent path={`${path}/:campusID`}/>
         <AllStudentsArray />
       </article>
     </div>
