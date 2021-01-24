@@ -4,12 +4,13 @@ import { getSingleCampus } from "../../../../redux/reducers/index";
 
 import ShowCampusInfo from "./components/ShowCampusInfo"
 
-class CampusesInfo extends React.Component {
+class CampusInfo extends React.Component {
+
   async componentDidMount () {
     console.log( "component did mount" );
-    console.log( this.props.campusId );
+    console.log( this.props.id );
     try {
-      await this.props.getSingleCampus( this.props.campusId );
+      await this.props.getSingleCampus(this.props.id);
     } catch ( error ) {
       console.error( error );
     }
@@ -24,14 +25,10 @@ class CampusesInfo extends React.Component {
             <ShowCampusInfo
               key={ index }
               id={ campusInfo.id }
-              studentsNumber={ index + 1 }
               campusImage={ campusInfo.imageUrl }
               campusName={ campusInfo.name }
               campusAddress={ campusInfo.address }
-              campusDescription={ campusInfo.description }
-              handleDelete={ this.handleDelete }
-              history={ this.props.history }
-              students={ campusInfo.students }
+              campusDescription={ campusInfo.description } 
             />
           );
         } ) }
@@ -57,4 +54,4 @@ const mapDispatchToProps = ( dispatch ) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)( CampusesInfo );
+)( CampusInfo );

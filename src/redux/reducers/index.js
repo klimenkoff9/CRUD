@@ -3,14 +3,15 @@ import axios from "axios";
 import { bindActionCreators } from "redux";
 
 //Action Types
-import { GOT_ALL_CAMPUSES, GOT_SINGLE_CAMPUS, GOT_SINGLE_STUDENT, GOT_ALL_STUDENTS } from "./actionTypes";
+import { GOT_ALL_CAMPUSES, GOT_SINGLE_CAMPUS, GOT_SINGLE_STUDENT, GOT_ALL_STUDENTS, GOT_STUDENTS_BY_CAMPUS } from "./actionTypes";
 
 //Initial State-- Look at stateful components and transfer over
 const initialState = {
 	campuses: [],
 	campus : [],
     student : [],
-    students: []
+    students: [],
+    studentsByCampus: []
 }
 //Action Creators
 const gotAllCampuses = (payload) => ({
@@ -32,6 +33,11 @@ const gotSingleStudent = (payload) => ({
 const gotAllStudents = (payload) => ({
 	type: GOT_ALL_STUDENTS,
 	payload,
+});
+
+const gotStudentsByCampus = (payload) => ({
+    type: GOT_STUDENTS_BY_CAMPUS,
+    payload
 });
 //Thunks - Just action creators that take a function
 
@@ -59,8 +65,8 @@ export const getAllCampuses = () => {
 	};
 };
 
-export const getSingleCampus = (id) => {
-	console.log("ABOUT TO THUNK FOR SINGLE CAMPUS");
+export const getSingleCampus = (id = 3) => {
+	console.log("ABOUT TO THUNK FOR SINGLE CAMPUS" + id);
 	return async (dispatch) => {
 		try {
 			const {data} = await axios.get(`http://localhost:8080/api/campus/${id}`);
@@ -73,15 +79,29 @@ export const getSingleCampus = (id) => {
 	}
 }
 
+export const getStudentsByCampus = (campusId) => {
+    console.log("ABOUT TO THUNK FOR SINGLE CAMPUS" + 3);
+	return async (dispatch) => {
+		try {
+			const {data} = await axios.get(`http://localhost:8080/api/student/campus/3`);
+			console.log("WE WANT THIS SINGLE RESPONSE", data);
+			console.log("ABOUT TO DISPATCH DATA");
+			dispatch(gotStudentsByCampus(data));
+		} catch (error) {
+			console.error(error);
+		}
+	}
+}
+
 // thunk to get single student by id
 export const getSingleStudent = (id) => {
 	console.log("ABOUT TO THUNK TO GET SINGLE STUDENT");
 	return async(dispatch) => {
 		try {
 			const {data} = await axios.get(`http://localhost:8080/api/student/${id}`)
-			console.log("WE WANT THIS SINGLE RESPONSE: " + data.student);
+			console.log("WE WANT THIS SINGLE RESPONSE: " + data);
 			console.log("ABOUT TO DISPATCH DATA");
-			dispatch(gotSingleStudent(data.student));
+			dispatch(gotStudentsByCampus(data));
 		} catch (error) {
 			console.error(error);
 		}
@@ -131,6 +151,8 @@ const rootReducer = (state = initialState, action) => {
             return {...state, student: action.payload};
         case GOT_ALL_STUDENTS:
             return {...state, students: action.payload};
+        case GOT_STUDENTS_BY_CAMPUS: 
+            return {...state, studentsByCampus: action.payload};
 		default:
 			return state;
 	}

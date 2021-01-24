@@ -3,6 +3,7 @@ import React from "react";
 const PrintAllStudents = ( props ) => {
   return (
     <div className="container">
+    {console.log("Hello World")}
       <div className="campusCard">
         {console.log(`this is the props ${props}`)}
         <div className="studentName">{props.firstName} {props.lastName}</div>
@@ -11,7 +12,7 @@ const PrintAllStudents = ( props ) => {
       </div>
       <br/>
     </div>
-  )
+  );
 
 };
 

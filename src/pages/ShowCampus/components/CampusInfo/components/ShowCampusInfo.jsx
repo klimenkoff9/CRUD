@@ -40,8 +40,7 @@ const ShowCampusInfo = (props) => {
         <button>EDIT</button>
         <button onClick={() => handleDelete()}>DELETE</button>
       </div>
-      <br></br>
-      <CampusInfo studentList = {props.students}/>
+      <br/>
     </div>
   );
 };

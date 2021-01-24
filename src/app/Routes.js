@@ -17,11 +17,10 @@ const Routes = () => {
 			<Route exact path="/campuses">
 				<AllCampuses />
 			</Route>
-      		<Route path="/campuses/:CampusName" component = {ShowCampus} />
+			<Route path="/campuses/:id" component = {ShowCampus} />
 			<Route path = "/students">
 				<AllStudents />
 			</Route>
-      <Route path="/campuses/:id" component = {ShowCampus} />
 	  <Route path = "/student/:StudentId" component = {Student}/>
 		</Switch>
 	);
