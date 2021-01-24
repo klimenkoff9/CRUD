@@ -1,6 +1,6 @@
 import React from "react";
 
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
 
 import CampusInfo  from "../../StudentsOnCampus/StudentsOnCampus"
@@ -37,7 +37,7 @@ const ShowCampusInfo = (props) => {
       </div>
       <div className="row2">
         <h3>{props.campusAddress}</h3>
-        <button>EDIT</button>
+        <Link to={`/campuses/${props.id}/edit`}><button>EDIT</button></Link>
         <button onClick={() => handleDelete()}>DELETE</button>
       </div>
       <br/>
