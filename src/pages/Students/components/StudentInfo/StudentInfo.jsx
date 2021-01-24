@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getSingleStudent } from '../../../redux/reducers';
+import { getSingleStudent } from '../../../../redux/reducers';
 
-import ShowStudentInfo from "./components/ShowStudentInfo.jsx"
+import ShowStudentInfo from "./components/ShowStudentInfo"
 
 class StudentInfo extends Component {
 
