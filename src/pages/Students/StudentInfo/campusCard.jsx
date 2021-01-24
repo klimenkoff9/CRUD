@@ -15,6 +15,7 @@ class CampusCard extends Component {
         console.log( "CampusCard component mounted" );
         await this.props.getSingleCampus(this.props.id);
         console.log( "Campus retreived all campuses" )
+        // ITS HAS TO MAP TO STATE OR ELSE VALUES WILL BE UNDEFINED
         this.props.campus.map((item) => {
             this.setState({
                 campusName : item.name,
