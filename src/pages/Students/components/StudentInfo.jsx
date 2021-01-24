@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAllCampuses, getSingleCampus, getSingleStudent } from '../../../redux/reducers';
-import { Link } from 'react-router-dom';
+import { getSingleStudent } from '../../../redux/reducers';
 
 import ShowStudentInfo from "./components/ShowStudentInfo.jsx"
 
@@ -9,12 +8,7 @@ class StudentInfo extends Component {
 
 
     async componentDidMount () {
-        console.log( 'component did mount' );
-        console.log( "props of component" + this.props );
-        const { match: { params: { StudentId } } } = this.props;
-        console.log( `this is the Student name ${StudentId}` );
-        await this.props.getSingleStudent( StudentId );
-        console.log( this.props.student.firstName )
+        await this.props.getSingleStudent(this.props.StudentId);
         // await this.props.getSingleCampus( this.state.campusId );
         // this.props.campus.map( ( item ) => {
         //     this.setState( {
