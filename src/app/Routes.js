@@ -8,6 +8,8 @@ import Student from "../pages/Students/StudentInfo/studentInfo.jsx"
 import EditCampus from "../pages/EditCampus/EditCampus.jsx"
 
 import AllStudents from "../pages/AllStudents/Students"
+import AddCampus from "../pages/AddCampus/AddCampus.jsx";
+
 
 const Routes = () => {
 	return (
@@ -15,15 +17,26 @@ const Routes = () => {
 			<Route exact path="/">
 				<Home />
 			</Route>
+
 			<Route exact path="/campuses">
 				<AllCampuses />
 			</Route>
-			<Route exact path="/campuses/:id" component = {ShowCampus} />
+
+			<Route path="/campuses/:id" component = {ShowCampus} />
+
 			<Route path = "/students">
 				<AllStudents />
 			</Route>
-	  	<Route exact path = "/student/:StudentId" component = {Student}/>
-		<Route exact path = "/campuses/:id/edit" component={EditCampus}/>
+
+	 		 <Route path = "/student/:StudentId" component = {Student}/>
+
+			<Route path = "/addcampus">
+				
+				<AddCampus/> 
+			</Route>
+			
+			<Route exact path = "/campuses/:id/edit" component={EditCampus}/>
+
 		</Switch>
 	);
 };

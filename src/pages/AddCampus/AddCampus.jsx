@@ -1,6 +1,7 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import { withRouter } from "react-router-dom";
 
 
 class AddCampus extends React.Component {
@@ -18,7 +19,7 @@ class AddCampus extends React.Component {
       }
     
       async handleSubmit(event) {
-        alert('The Campus ' + this.state.value + " at " + this.state.address + " has been added.");
+        alert('The Campus ' + this.state.value + " has been added.");
         event.preventDefault();
 
         const res = await axios.post('http://localhost:8080/api/campus', {
@@ -27,6 +28,10 @@ class AddCampus extends React.Component {
         .then(function (response) {
             console.log(response);
         })
+
+      
+        this.props.history.push("/campuses");
+       
       } 
 
     render(){
@@ -42,8 +47,11 @@ class AddCampus extends React.Component {
              <button type="submit" class = "btn btn-primary"> Add Campus</button>
              </div> 
              </form>
+
+             
+        
         );
     }
 }
 
-export default AddCampus;
+export default withRouter(AddCampus);
