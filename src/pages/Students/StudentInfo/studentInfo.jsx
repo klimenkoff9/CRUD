@@ -7,24 +7,6 @@ import "./studentInfo.css";
 
 class StudentInfo extends Component {
 
-    constructor ( props ) {
-
-        super( props )
-
-        this.state = {
-            studentId: 0,
-            firstName: "",
-            lastName: "",
-            gpa: 0,
-            email: "",
-            imageUrl: "",
-            campusId: 0,
-            campusName: "",
-            campusUrl: "",
-            numberOfStudents: 0,
-            inCampus: false
-        }
-    }
 
     async componentDidMount () {
         console.log( 'component did mount' );

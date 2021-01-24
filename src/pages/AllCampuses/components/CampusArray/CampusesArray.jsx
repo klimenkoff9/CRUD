@@ -3,7 +3,7 @@ import React from "react";
 import { connect } from 'react-redux';
 import { getAllCampuses } from '../../../../redux/reducers/index.js';
 
-import Campus from "./components/NewCampus"
+import Campus from "../NewCampus/NewCampus"
 
 class Campuses extends React.Component {
     async componentDidMount() {
@@ -20,7 +20,7 @@ class Campuses extends React.Component {
             <Campus
               key={index}
               id = {campus.id}
-              studentsNumber={index + 1}
+              studentsNumber={campus.students.length}
               campusName={campus.name}
               campusAddress = {campus.address}
               campusDescription = {campus.description}
