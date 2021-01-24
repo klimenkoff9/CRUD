@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { getSingleCampus } from '../../../../redux/reducers/index';
 
 import Student from "../../../Students/Student.jsx";
-import "./campusInfo.css";
 
 
 class CampusInfo extends Component {
