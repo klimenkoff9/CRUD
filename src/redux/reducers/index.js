@@ -109,7 +109,7 @@ export const getSingleStudent = (id) => {
 }
 // think to post a student to student table in database
 export const postSingleStudent = (studentObj) => {
-	console.log("ABOUT TO THUNK TO ADD SINGLE STUDENT");
+	console.log("ABOUT TO THUNK TO POST SINGLE STUDENT");
 	return async (dispatch) => {
 		try {
 			await axios.post(`http://localhost:8080/api/student`, studentObj)
