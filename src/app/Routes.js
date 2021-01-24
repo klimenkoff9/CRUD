@@ -35,7 +35,7 @@ const Routes = () => {
 				<AddCampus/> 
 			</Route>
 
-			<Route exact path = "/:path/addstudent/:campusID">
+			<Route exact path = "/:path/:campusID/addstudent">
 				<AddStudentForm/> 
 			</Route>
 			
