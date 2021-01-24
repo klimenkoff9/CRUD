@@ -65,7 +65,7 @@ export const getAllCampuses = () => {
 	};
 };
 
-export const getSingleCampus = (id = 3) => {
+export const getSingleCampus = (id) => {
 	console.log("ABOUT TO THUNK FOR SINGLE CAMPUS" + id);
 	return async (dispatch) => {
 		try {
@@ -80,10 +80,10 @@ export const getSingleCampus = (id = 3) => {
 }
 
 export const getStudentsByCampus = (campusId) => {
-    console.log("ABOUT TO THUNK FOR SINGLE CAMPUS" + 3);
+    console.log("ABOUT TO THUNK FOR SINGLE STUDENTS BY CAMPUS" + campusId);
 	return async (dispatch) => {
 		try {
-			const {data} = await axios.get(`http://localhost:8080/api/student/campus/3`);
+			const {data} = await axios.get(`http://localhost:8080/api/student/campus/${campusId}`);
 			console.log("WE WANT THIS SINGLE RESPONSE", data);
 			console.log("ABOUT TO DISPATCH DATA");
 			dispatch(gotStudentsByCampus(data));

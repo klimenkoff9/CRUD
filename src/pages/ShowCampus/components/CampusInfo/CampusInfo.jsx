@@ -47,7 +47,7 @@ const mapStateToProps = ( state ) => {
 const mapDispatchToProps = ( dispatch ) => {
   console.log( "Map dispatching to props.." );
   return {
-    getSingleCampus: ( name ) => dispatch( getSingleCampus( name ) ),
+    getSingleCampus: ( id ) => dispatch( getSingleCampus( id ) ),
   };
 };
 
