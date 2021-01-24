@@ -63,7 +63,7 @@ class CampusInfo extends Component {
             addStudent: false
         } )
         this.props.postSingleStudent(obj);
-        this.props.history.push("/campuses/${this.state.id}");
+        this.props.history.push(`/campuses/${this.state.id}`);
     }
 
     handleDelete = async () => {
