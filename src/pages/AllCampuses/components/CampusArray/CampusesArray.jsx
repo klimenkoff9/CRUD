@@ -28,6 +28,7 @@ class Campuses extends React.Component {
               campusName={campus.name}
               campusAddress = {campus.address}
               campusDescription = {campus.description}
+              campusImage ={campus.imageUrl}
             />
             </div>
           );    
@@ -41,6 +42,7 @@ class Campuses extends React.Component {
               campusName={campus.name}
               campusAddress = {campus.address}
               campusDescription = {campus.description}
+              campusImage ={campus.imageUrl}
             />
             </div>
           );
