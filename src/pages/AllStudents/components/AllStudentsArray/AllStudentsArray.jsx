@@ -16,6 +16,7 @@ class AllStudentsArray extends React.Component {
     return (
       <div>
         {this.props.students.map((student, index) => {
+          console.log(student.campusId + student.firstName);
           return (
             <PrintAllStudents
               key={index}

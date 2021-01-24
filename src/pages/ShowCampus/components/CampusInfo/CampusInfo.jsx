@@ -20,18 +20,14 @@ class CampusInfo extends React.Component {
     console.log( this.props.campus )
     return (
       <div>
-        {this.props.campus.map( ( campusInfo, index ) => {
-          return (
             <ShowCampusInfo
-              key={ index }
-              id={ campusInfo.id }
-              campusImage={ campusInfo.imageUrl }
-              campusName={ campusInfo.name }
-              campusAddress={ campusInfo.address }
-              campusDescription={ campusInfo.description } 
+              id={ this.props.campusInfo.id }
+              campusImage={ this.props.campusInfo.imageUrl }
+              campusName={ this.props.campusInfo.name }
+              campusAddress={ this.props.campusInfo.address }
+              campusDescription={ this.props.campusInfo.description } 
             />
           );
-        } ) }
       </div>
     );
   }
@@ -40,7 +36,7 @@ class CampusInfo extends React.Component {
 const mapStateToProps = ( state ) => {
   console.log( "Map state to props.." );
   return {
-    campus: state.campus,
+    campusInfo: state.campus,
   };
 };
 
