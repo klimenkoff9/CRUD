@@ -6,11 +6,29 @@ import ShowCampusInfo from "./components/ShowCampusInfo"
 
 class CampusInfo extends React.Component {
 
+    constructor(props){
+      super(props)
+      
+      this.state = {
+        imageUrl : '',
+        name : '',
+        address: '',
+        description: ''
+      }
+    }
   async componentDidMount () {
     console.log( "component did mount" );
     console.log( this.props.id );
     try {
       await this.props.getSingleCampus(this.props.id);
+      this.props.campusInfo.map((item) => {
+        this.setState({
+          imageUrl: item.imageUrl,
+          name: item.name,
+          address: item.address,
+          description: item.description
+        })
+      })
     } catch ( error ) {
       console.error( error );
     }
@@ -21,13 +39,16 @@ class CampusInfo extends React.Component {
     return (
       <div>
             <ShowCampusInfo
-              id={ this.props.campusInfo.id }
-              campusImage={ this.props.campusInfo.imageUrl }
-              campusName={ this.props.campusInfo.name }
-              campusAddress={ this.props.campusInfo.address }
-              campusDescription={ this.props.campusInfo.description } 
+              id={ this.props.id }
+              campusImage={ this.state.imageUrl }
+              campusName={ this.state.name }
+              campusAddress={ this.state.address }
+              campusDescription={ this.state.description }
+              // campusImage={ this.props.campusInfo.imageUrl }
+              // campusName={ this.props.campusInfo.name }
+              // campusAddress={ this.props.campusInfo.address }
+              // campusDescription={ this.props.campusInfo.description }
             />
-          );
       </div>
     );
   }

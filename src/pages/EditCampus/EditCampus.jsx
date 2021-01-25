@@ -13,7 +13,7 @@ const EditCampus = ( props ) => {
       <article>
       <h1>Edit Campus Info</h1>
         <CampusForm id={id} />
-        <StudentsOnCampus id={id} />
+        {/* <StudentsOnCampus id={id} /> */}
       </article>
     </div>
   );

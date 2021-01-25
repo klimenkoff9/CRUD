@@ -15,8 +15,10 @@ class AllStudentsArray extends React.Component {
     console.log(this.props.students);
     return (
       <div className="row">
+        <center>
         {this.props.students.map((student, index) => {
           console.log(student.campusId + student.firstName);
+          //creates the columns
           {{if(index%2===0)
             return (
               <div className="column">
@@ -25,7 +27,8 @@ class AllStudentsArray extends React.Component {
                 firstName = {student.firstName}
                 lastName = {student.lastName}
                 studentImage = {student.imageUrl}
-                campusName = "Brooklyn"
+                id = {student.id}
+                campusId = {student.campusId}
               />
               </div>
             );
@@ -44,6 +47,7 @@ class AllStudentsArray extends React.Component {
             );
           }}}
         })}
+        </center>
       </div>
     );
   }

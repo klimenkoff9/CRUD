@@ -18,24 +18,26 @@ const ShowStudentInfo = (props) => {
   };
 
   return (
+
     <div>
       <center>
       <div className ="card">
         <img id ="profile"src={props.imageUrl} width="400px" height="300px" alt="student"/>
         <div className="container">
-          <h3>{props.firstName} {props.lastName}</h3>
+          <h2>{props.firstName} {props.lastName}</h2>
           <h4>Email: {props.email}</h4>
           <h4>GPA: {props.gpa}</h4>
         </div>
-
       </div>
-        <div>
-        <button className="btn btn-primary">EDIT</button>
-        <button className="btn btn-primary btn-outline-danger"onClick={handleDelete}>DELETE</button>
+      
+      <br />
+      <div className="row2">
+        <Link to={`/student/${props.StudentId}/edit`}><button className="btn btn-primary">EDIT</button></Link>
+        <button className="btn btn-primary btn-outline-danger" onClick={handleDelete}>DELETE</button>
       </div>
+      <br></br>
       </center>
     </div>
-    
   );
 };
 

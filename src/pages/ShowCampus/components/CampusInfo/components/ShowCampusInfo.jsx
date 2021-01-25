@@ -19,7 +19,9 @@ const ShowCampusInfo = (props) => {
 
   return (
     <div>
-      <div className="row">
+      <center>
+      <div id ="top"className="row">
+      
         <div className="column">
           <img
             src={props.campusImage}
@@ -27,20 +29,23 @@ const ShowCampusInfo = (props) => {
             width="400px"
             height="300px"
           />
+          <h3>{props.campusAddress}</h3>
+          <Link to={`/campuses/${props.id}/edit`}><button className="btn btn-primary">EDIT</button></Link>
+          <button className="btn btn-primary btn-outline-danger"onClick={() => handleDelete()}>DELETE</button>
         </div>
-        <div className="column">
+            
+        <div id ="topRight"className="column">
           <h1>
             ID: {props.id} | {props.campusName}
           </h1>
           <p>{props.campusDescription}</p>
         </div>
+        
       </div>
-      <div className="row2">
-        <h3>{props.campusAddress}</h3>
-        <Link to={`/campuses/${props.id}/edit`}><button>EDIT</button></Link>
-        <button onClick={() => handleDelete()}>DELETE</button>
-      </div>
-      <br/>
+      </center>
+    
+      <br></br>
+
     </div>
   );
 };

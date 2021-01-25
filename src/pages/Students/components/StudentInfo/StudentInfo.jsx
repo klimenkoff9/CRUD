@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { getSingleStudent } from '../../../../redux/reducers';
 
 import ShowStudentInfo from "./components/ShowStudentInfo"
+import CampusCard from "./components/campusCard"
+import Campus from '../../../AllCampuses/components/NewCampus/NewCampus';
 
 class StudentInfo extends Component {
 
@@ -17,10 +19,11 @@ class StudentInfo extends Component {
         //         numberOfStudents: item.students
         //     } )
         // } )
+        console.log("the campus id for this student" + this.props.student.campusId);
     }
 
     render () {
-        const { firstName, lastName, imageUrl, email, gpa, id} = this.props.student;
+        const { firstName, lastName, imageUrl, email, gpa, id, campusId } = this.props.student;
         return (
             
             <div>
@@ -31,6 +34,8 @@ class StudentInfo extends Component {
                 email = {email}
                 gpa = {gpa}
                 id = {id}
+                campusId = {campusId}
+                StudentId = {this.props.StudentId}
             />
                 {/* {this.props.campusName ?
                     <div>
@@ -45,7 +50,7 @@ class StudentInfo extends Component {
                         <h1>This student is not registered to a campus</h1>
                     </div>
                 } */}
-
+            <br></br>
             </div>
         )
     }

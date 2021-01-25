@@ -1,6 +1,6 @@
 .column {
     float: left;
-    width: 25%;
+    width: 23%;
     padding: 10px;
   }
 .row:after {
@@ -8,4 +8,3 @@
     display: table;
     clear: both;
   }
-  
