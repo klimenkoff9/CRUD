@@ -1,19 +1,43 @@
-import React from "react";
+import React, {useEffect} from "react";
+import {Link} from "react-router-dom";
 
-const PrintAllStudents = ( props ) => {
+import axios from "axios";
+class PrintAllStudents extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      campusName: "",
+    }
+
+  }
+
+  componentDidMount =  async () => {
+    try {
+      console.log(this.state.campusId);
+    const {data} = await axios.get(`http://localhost:8080/api/campus/nostudent/${this.props.campusId}`)
+    console.log(data);
+    this.setState({ ...this.state,
+      campusName: data.name
+    })
+    } catch (error) {
+      
+    }
+  }
+  
+  render() {
   return (
     <div className="container">
-    {console.log("Hello World")}
       <div className="campusCard">
-        {console.log(`this is the props ${props}`)}
-        <div className="studentName">{props.firstName} {props.lastName}</div>
-        <div className="campusName">id : { props.campusName }</div>
-        <div className="studentImage"><img src={props.image}  alt="student"/></div>
+        <div className="studentName"> Name: <Link to={`/student/${this.props.id}`}>{this.props.firstName} {this.props.lastName}</Link></div>
+        <div className="campusName"> Campus: {this.state.campusName}</div>
+        <div className="studentImage"><img src={this.props.studentImage}  alt="student"/></div>
       </div>
       <br/>
     </div>
   );
-
 };
+
+}
+
 
 export default PrintAllStudents;

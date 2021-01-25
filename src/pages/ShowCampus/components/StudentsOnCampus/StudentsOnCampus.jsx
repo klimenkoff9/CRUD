@@ -1,21 +1,28 @@
 import React, { Component } from "react";
-import axios from "axios";
 import { connect } from "react-redux";
 import { getStudentsByCampus } from "../../../../redux/reducers/index";
 
 import PrintAllStudents from '../../../PrintAllStudents/PrintAllStudents';
 class StudentsOnCampus extends Component {
+
   async componentDidMount() {
     console.log("component did mount");
     console.log(this.props.id);
     try {
-      await this.props.getStudentsByCampus(3);
+    await this.props.getStudentsByCampus(this.props.id);
     } catch (error) {
       console.error(error);
     }
   }
 
   render() {
+      console.log("Hello World");
+    if (this.props.studentsByCampus.length === 0) {
+        console.log("HelloWorld");
+        return (
+            <h3>No students assigned to this campus</h3>
+        );
+    } else {
     return (
       <div>
       {console.log(this.props.studentsByCampus)}
@@ -32,6 +39,7 @@ class StudentsOnCampus extends Component {
         })}
       </div>
     );
+    }
   }
 }
 
@@ -45,7 +53,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   console.log("Map dispatching to props..");
   return {
-    getStudentsByCampus: () => dispatch(getStudentsByCampus()),
+    getStudentsByCampus: (id) => dispatch(getStudentsByCampus(id)),
   };
 };
 

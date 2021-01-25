@@ -66,10 +66,10 @@ export const getAllCampuses = () => {
 };
 
 export const getSingleCampus = (id) => {
-	console.log("ABOUT TO THUNK FOR SINGLE CAMPUS");
+	console.log("ABOUT TO THUNK FOR SINGLE CAMPUS" + id);
 	return async (dispatch) => {
 		try {
-			const {data} = await axios.get(`http://localhost:8080/api/campus/${id}`);
+			const {data} = await axios.get(`http://localhost:8080/api/campus/nostudent/${id}`);
 			console.log("WE WANT THIS SINGLE RESPONSE", data);
 			console.log("ABOUT TO DISPATCH DATA");
 			dispatch(gotSingleCampus(data));
@@ -80,10 +80,10 @@ export const getSingleCampus = (id) => {
 }
 
 export const getStudentsByCampus = (campusId) => {
-    console.log("ABOUT TO THUNK FOR SINGLE CAMPUS" + 3);
+    console.log("ABOUT TO THUNK FOR SINGLE STUDENTS BY CAMPUS" + campusId);
 	return async (dispatch) => {
 		try {
-			const {data} = await axios.get(`http://localhost:8080/api/student/campus/3`);
+			const {data} = await axios.get(`http://localhost:8080/api/student/campus/${campusId}`);
 			console.log("WE WANT THIS SINGLE RESPONSE", data);
 			console.log("ABOUT TO DISPATCH DATA");
 			dispatch(gotStudentsByCampus(data));
@@ -99,9 +99,9 @@ export const getSingleStudent = (id) => {
 	return async(dispatch) => {
 		try {
 			const {data} = await axios.get(`http://localhost:8080/api/student/${id}`)
-			console.log("WE WANT THIS SINGLE RESPONSE: " + data);
+			console.log(data.student);
 			console.log("ABOUT TO DISPATCH DATA");
-			dispatch(gotStudentsByCampus(data));
+			dispatch(gotSingleStudent(data.student));
 		} catch (error) {
 			console.error(error);
 		}
@@ -109,7 +109,7 @@ export const getSingleStudent = (id) => {
 }
 // think to post a student to student table in database
 export const postSingleStudent = (studentObj) => {
-	console.log("ABOUT TO THUNK TO ADD SINGLE STUDENT");
+	console.log("ABOUT TO THUNK TO POST SINGLE STUDENT");
 	return async (dispatch) => {
 		try {
 			await axios.post(`http://localhost:8080/api/student`, studentObj)

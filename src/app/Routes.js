@@ -8,9 +8,13 @@ import StudentInfo from "../pages/Students/StudentInfo/studentInfo.jsx";
 import AddStudent from "../pages/Students/AddStudent";
 import Submitted from "../pages/Submitted/submitted.jsx";
 import ShowCampus from "../pages/ShowCampus/ShowCampus";
-import Student from "../pages/Students/StudentInfo/studentInfo.jsx"
+import Student from "../pages/Students/Student.jsx"
+import EditCampus from "../pages/EditCampus/EditCampus.jsx"
 
 import AllStudents from "../pages/AllStudents/Students"
+import AddCampus from "../pages/AddCampus/AddCampus.jsx";
+import AddStudentForm from "../pages/AddStudent/components/AddStudentForm.jsx"
+
 
 const Routes = () => {
 	return (
@@ -18,20 +22,29 @@ const Routes = () => {
 			<Route exact path="/">
 				<Home />
 			</Route>
+
 			<Route exact path="/campuses">
 				<AllCampuses />
 			</Route>
-			<Route path="/campuses/:id" component = {ShowCampus} />
-			<Route path = "/students">
+
+			<Route exact path="/campuses/:id" component = {ShowCampus} />
+
+			<Route exact path = "/students">
 				<AllStudents />
 			</Route>
-			<Route exact path = "/submitted" component={Submitted}/>
-			<Route path="/campuses/:id" component={CampusInfo} />
-			//<Route path="/student/:StudentId" component={StudentInfo} />
-			{/* THIS IS THE ROUTE TO ADD STUDENTS IN A CAMPUS */}
-			<Route exact path = "/AddStudent/:campusId" component={AddStudent}/>
-			{/* ROUTE TO RENDER ADD STUDENT FORM WITH ANOTHER PATH */}
-	  <Route path = "/student/:StudentId" component = {Student}/>
+
+	 		 <Route exact path = "/student/:StudentId" component = {Student}/>
+
+			<Route exact path = "/addcampus">
+				<AddCampus/> 
+			</Route>
+
+			<Route exact path = "/:path/:campusID/addstudent">
+				<AddStudentForm/> 
+			</Route>
+			
+			<Route exact path = "/campuses/:id/edit" component={EditCampus}/>
+
 		</Switch>
 	);
 };

@@ -1,13 +1,13 @@
 import React from "react";
-import AddCampus from "./components/AddCampus/AddCampus.jsx";
+import { Link } from 'react-router-dom';
 import CampusesArray from "./components/CampusArray/CampusesArray";
 
 const Campuses = () => {
   return (
     <div className="campuses">
       <article>
+      <Link to = '/addcampus'><button>Add Campus</button> </Link>
         <CampusesArray />
-        <AddCampus />
       </article>
     </div>
   );

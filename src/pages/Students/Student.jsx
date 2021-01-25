@@ -1,14 +1,12 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import StudentInfo from "./components/StudentInfo/StudentInfo"
 
-import "./student.css"
 
-const Student = ( props ) => {
+const Student = (props) => {
+    const { match: { params: { StudentId } } } = props;
     return (
-        <div className = "student-card">
-            <img src={ props.imageUrl } alt="student-profile" width = "100px" height = "80px"></img>
-            <Link to = {`/student/${props.StudentId}`}><p>{ props.firstName } { props.lastName }</p></Link>
-            <p>{ props.campusname }</p>
+        <div>
+            <StudentInfo StudentId = {StudentId} />
         </div>
     )
 }
