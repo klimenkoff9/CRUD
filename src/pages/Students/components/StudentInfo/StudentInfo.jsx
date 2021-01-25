@@ -34,7 +34,7 @@ class StudentInfo extends Component {
                 email = {email}
                 gpa = {gpa}
                 id = {id}
-                campusId = {campusId}
+                StudentId = {this.props.StudentId}
             />
                 {/* {this.props.campusName ?
                     <div>

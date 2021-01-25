@@ -33,14 +33,14 @@ class AddCampus extends React.Component {
     render(){
         return (
             <form onSubmit={this.handleSubmit}>
-               <div class = "form-group">
-                   <div class="col-7">
-                   <label for = "campusname"></label>
-                   <input type = "username" class="form-control form-control-lg" id="exampleInputPassword1" onChange={this.handleChange} placeholder="Campus Name"></input>
+               <div className = "form-group">
+                   <div className="col-7">
+                   <label htmlFor = "campusname"></label>
+                   <input type = "username" className="form-control form-control-lg" onChange={this.handleChange} placeholder="Campus Name"></input>
                    </div>  
                </div>  
-               <div class = "text-center"> 
-             <button type="submit" class = "btn btn-primary"> Add Campus</button>
+               <div className = "text-center"> 
+             <button type="submit" className = "btn btn-primary"> Add Campus</button>
              </div> 
              </form>
 
