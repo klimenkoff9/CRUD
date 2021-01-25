@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import './PrintAllStudents.css'
 import axios from "axios";
 class PrintAllStudents extends React.Component {
   constructor() {

@@ -25,7 +25,7 @@ class CampusForm extends Component {
       try {
         await axios.put(`http://localhost:8080/api/campus/${this.props.id}`, {
         name: this.state.name,
-        imageURL: this.state.image,
+        imageUrl: this.state.image,
         address: this.state.address,
         description: this.state.description
       });
