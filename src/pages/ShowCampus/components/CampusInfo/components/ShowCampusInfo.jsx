@@ -33,8 +33,7 @@ const ShowCampusInfo = (props) => {
           <Link to={`/campuses/${props.id}/edit`}><button className="btn btn-primary">EDIT</button></Link>
           <button className="btn btn-primary btn-outline-danger"onClick={() => handleDelete()}>DELETE</button>
         </div>
-        
-        
+            
         <div id ="topRight"className="column">
           <h1>
             ID: {props.id} | {props.campusName}

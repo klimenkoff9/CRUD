@@ -16,7 +16,7 @@ class Campuses extends React.Component {
   render() {
     console.log(this.props.getAllCampuses);
     return (
-      <div className="row">
+      <div style={{marginLeft:500}}className="row">
         {this.props.campusesList.map((campus, index) => {
           {{if(index%2===0)
           return (

@@ -7,7 +7,7 @@ const Campuses = () => {
   return (
     <div className="campuses">
       <article>
-      <Link to = '/addcampus'><button type ="button" class ="btn btn-primary">Add Campus</button> </Link>
+      <Link to = '/addcampus'><center><button type ="button" class ="btn btn-primary">Add Campus</button></center> </Link>
         <CampusesArray />
       </article>
     </div>

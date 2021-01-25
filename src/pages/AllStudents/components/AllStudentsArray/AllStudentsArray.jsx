@@ -26,7 +26,8 @@ class AllStudentsArray extends React.Component {
                 firstName = {student.firstName}
                 lastName = {student.lastName}
                 studentImage = {student.imageUrl}
-                campusName = "Brooklyn"
+                id = {student.id}
+                campusId = {student.campusId}
               />
               </div>
             );
