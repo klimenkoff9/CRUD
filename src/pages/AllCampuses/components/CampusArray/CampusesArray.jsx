@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { getAllCampuses } from '../../../../redux/reducers/index.js';
 
 import Campus from "../NewCampus/NewCampus"
+import "./CampusesArray.css"
 
 class Campuses extends React.Component {
     async componentDidMount() {
@@ -11,12 +12,15 @@ class Campuses extends React.Component {
     await this.props.getAllCampuses();
     console.log("we gucci");
   }
+
   render() {
     console.log(this.props.getAllCampuses);
     return (
-      <div>
+      <div className="row">
         {this.props.campusesList.map((campus, index) => {
+          {{if(index%2===0)
           return (
+            <div className ="column">
             <Campus
               key={index}
               id = {campus.id}
@@ -24,8 +28,25 @@ class Campuses extends React.Component {
               campusName={campus.name}
               campusAddress = {campus.address}
               campusDescription = {campus.description}
+              campusImage ={campus.imageUrl}
             />
+            </div>
+          );    
+        else{
+          return (
+            <div className="column">
+            <Campus
+              key={index}
+              id = {campus.id}
+              studentsNumber={campus.students.length}
+              campusName={campus.name}
+              campusAddress = {campus.address}
+              campusDescription = {campus.description}
+              campusImage ={campus.imageUrl}
+            />
+            </div>
           );
+        }}}
         })}
       </div>
     );
