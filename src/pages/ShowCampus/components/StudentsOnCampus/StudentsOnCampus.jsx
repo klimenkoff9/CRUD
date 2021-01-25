@@ -16,7 +16,7 @@ class StudentsOnCampus extends Component {
   }
 
   render() {
-      console.log("Hello World");
+    console.log(this.props.id);
     if (this.props.studentsByCampus.length === 0) {
         console.log("HelloWorld");
         return (
@@ -33,7 +33,7 @@ class StudentsOnCampus extends Component {
               firstName={student.firstName}
               lastName={student.lastName}
               studentImage={student.imageUrl}
-              campusName="Brooklyn"
+              campusId={this.props.id}
             />
           );
         })}

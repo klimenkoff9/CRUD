@@ -27,13 +27,13 @@ const ShowStudentInfo = (props) => {
           <h1>
             {props.firstName} {props.lastName}
           </h1>
-          <h3>{props.email}</h3>
-          <h3>{props.gpa}</h3>
+          <h3>Email: {props.email}</h3>
+          <h3>GPA: {props.gpa}</h3>
         </div>
       </div>
       <br />
       <div className="row2">
-        <button>EDIT</button>
+        <Link to={`/student/${props.StudentId}/edit`}><button>EDIT</button></Link>
         <button onClick={handleDelete}>DELETE</button>
       </div>
     </div>

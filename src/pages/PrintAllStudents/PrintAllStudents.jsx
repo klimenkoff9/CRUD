@@ -13,7 +13,7 @@ class PrintAllStudents extends React.Component {
 
   componentDidMount =  async () => {
     try {
-      console.log(this.state.campusId);
+      console.log(this.props.campusId);
     const {data} = await axios.get(`http://localhost:8080/api/campus/nostudent/${this.props.campusId}`)
     console.log(data);
     this.setState({ ...this.state,
