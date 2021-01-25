@@ -4,9 +4,9 @@ import axios from 'axios';
 import { getAllCampuses, getSingleCampus, getSingleStudent } from '../../../redux/reducers';
 import { Link } from 'react-router-dom';
 
-import "./studentInfo.css";
-import AssignCampus from '../StudentInfo/assignCampus/assignCampus';
-import CampusCard from "./campusCard";
+
+import AssignCampus from '../components/StudentInfo/components/assignCampus/assignCampus';
+import CampusCard from "../components/StudentInfo/components/campusCard";
 
 class StudentInfo extends Component {
 

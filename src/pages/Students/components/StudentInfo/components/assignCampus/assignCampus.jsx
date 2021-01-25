@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getAllCampuses } from "../../../../redux/reducers";
+import { getAllCampuses } from "../../../../../../redux/reducers";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from "react-redux";

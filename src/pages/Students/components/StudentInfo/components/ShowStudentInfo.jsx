@@ -4,6 +4,7 @@ import { withRouter, Link } from "react-router-dom";
 import axios from "axios";
 
 import "./ShowStudentInfo.css";
+import StudentCampus from "./StudentCampus"
 
 const ShowStudentInfo = (props) => {
 
@@ -18,6 +19,7 @@ const ShowStudentInfo = (props) => {
   };
 
   return (
+
     <div>
       <div className="row">
         <div className="column">
@@ -25,7 +27,7 @@ const ShowStudentInfo = (props) => {
         </div>
         <div className="column">
           <h1>
-            {props.firstName} {props.lastName}
+           Campus ID: {props.campusId} | {props.firstName} {props.lastName}
           </h1>
           <h3>{props.email}</h3>
           <h3>{props.gpa}</h3>
@@ -36,6 +38,8 @@ const ShowStudentInfo = (props) => {
         <button>EDIT</button>
         <button onClick={handleDelete}>DELETE</button>
       </div>
+      <br></br>
+      <StudentCampus id = {props.campusId}/>
     </div>
   );
 };

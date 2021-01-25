@@ -30,6 +30,8 @@ class StudentsOnCampus extends Component {
           return (
             <PrintAllStudents
               key={index}
+              id ={student.id}
+              campusId = {student.campusId}
               firstName={student.firstName}
               lastName={student.lastName}
               studentImage={student.imageUrl}
