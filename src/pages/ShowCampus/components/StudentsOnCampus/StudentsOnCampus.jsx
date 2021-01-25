@@ -20,14 +20,16 @@ class StudentsOnCampus extends Component {
     if (this.props.studentsByCampus.length === 0) {
         console.log("HelloWorld");
         return (
-            <h3>No students assigned to this campus</h3>
+            <center><h3>No students assigned to this campus</h3></center>
         );
     } else {
     return (
-      <div>
+      <div style={{marginLeft:500}}className="row">   
       {console.log(this.props.studentsByCampus)}
         {this.props.studentsByCampus.map((student, index) => {
+        {{if(index%2==0)
           return (
+            <div className ="column">
             <PrintAllStudents
               key={index}
               id ={student.id}
@@ -37,8 +39,24 @@ class StudentsOnCampus extends Component {
               studentImage={student.imageUrl}
               campusId={this.props.id}
             />
+            </div>
           );
-        })}
+        else{
+          return (
+            <div className ="column">
+            <PrintAllStudents
+              key={index}
+              id ={student.id}
+              campusId = {student.campusId}
+              firstName={student.firstName}
+              lastName={student.lastName}
+              studentImage={student.imageUrl}
+              campusId={this.props.id}
+            />
+            </div>
+          );
+        }}}  
+      })}
       </div>
     );
     }

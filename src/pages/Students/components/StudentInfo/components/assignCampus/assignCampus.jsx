@@ -34,7 +34,7 @@ class AssignCampus extends Component {
                         } )
                     }
                 </select>
-                <Link to="/submitted"><button onClick={ () => this.handleSubmit() }>Change Campus</button></Link>
+                <Link to="/submitted"><button className="btn btn-primary" onClick={ () => this.handleSubmit() }>Change Campus</button></Link>
             </div>
         )
     }

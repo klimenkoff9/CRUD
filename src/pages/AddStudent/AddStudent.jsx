@@ -7,7 +7,9 @@ const AddStudent = (props) => {
   return (
     <div className="campuses">
       <article>
+        <center>
       <Link to={`${props.path}/addstudent`}><button type = "button" className="btn btn-primary" >Add Student</button></Link>
+        </center>
       </article>
     </div>
   );

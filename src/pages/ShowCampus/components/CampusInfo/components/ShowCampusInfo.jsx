@@ -44,7 +44,8 @@ const ShowCampusInfo = (props) => {
         
       </div>
       </center>
-
+    
+      <br></br>
 
     </div>
   );

@@ -15,6 +15,7 @@ class AllStudentsArray extends React.Component {
     console.log(this.props.students);
     return (
       <div className="row">
+        <center>
         {this.props.students.map((student, index) => {
           console.log(student.campusId + student.firstName);
           {{if(index%2===0)
@@ -44,6 +45,7 @@ class AllStudentsArray extends React.Component {
             );
           }}}
         })}
+        </center>
       </div>
     );
   }
