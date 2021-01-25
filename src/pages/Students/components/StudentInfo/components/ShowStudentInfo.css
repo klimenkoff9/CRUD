@@ -1,24 +1,22 @@
 * {
 	box-sizing: border-box;
 }
-
-/* Create two equal columns that floats next to each other */
-.column {
-	float: left;
-	width: 50%;
-	padding: 10px;
-	height: 300px; /* Should be removed. Only for demonstration */
-}
-
-/* Clear floats after the columns */
-.row:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-.campus-card{
-    border: 1px solid black;
-    width: 200px;
-    padding: 10px;
-    margin: 0;
+.card {
+	
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+	width:20%
+  }
+  
+  
+  .card:hover {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  
+  .container {
+	padding: 2px 16px;
+  }
+#profile{
+	width:100%;
 }

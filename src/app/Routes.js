@@ -11,7 +11,7 @@ import ShowCampus from "../pages/ShowCampus/ShowCampus";
 import Student from "../pages/Students/Student.jsx"
 import EditCampus from "../pages/EditCampus/EditCampus.jsx"
 import EditStudent from "../pages/Students/components/EditStudent/EditStudent.jsx"
-
+import 'bootstrap/dist/css/bootstrap.css';
 import AllStudents from "../pages/AllStudents/Students"
 import AddCampus from "../pages/AddCampus/AddCampus.jsx";
 import AddStudentForm from "../pages/AddStudent/components/AddStudentForm.jsx"

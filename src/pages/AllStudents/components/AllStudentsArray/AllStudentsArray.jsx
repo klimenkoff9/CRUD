@@ -14,19 +14,35 @@ class AllStudentsArray extends React.Component {
   render() {
     console.log(this.props.students);
     return (
-      <div>
+      <div className="row">
         {this.props.students.map((student, index) => {
           console.log(student.campusId + student.firstName);
-          return (
-            <PrintAllStudents
-              key={index}
-              firstName = {student.firstName}
-              lastName = {student.lastName}
-              studentImage = {student.imageUrl}
-              id = {student.id}
-              campusId = {student.campusId}
-            />
-          );
+          {{if(index%2===0)
+            return (
+              <div className="column">
+              <PrintAllStudents
+                key={index}
+                firstName = {student.firstName}
+                lastName = {student.lastName}
+                studentImage = {student.imageUrl}
+                campusName = "Brooklyn"
+              />
+              </div>
+            );
+          else{
+            return(
+            <div className="column">
+              <PrintAllStudents
+                key={index}
+                firstName = {student.firstName}
+                lastName = {student.lastName}
+                studentImage = {student.imageUrl}
+                id = {student.id}
+                campusId = {student.campusId}
+              />
+              </div>
+            );
+          }}}
         })}
       </div>
     );
