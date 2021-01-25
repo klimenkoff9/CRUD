@@ -1,3 +1,7 @@
 h1 {
     font-family: 'Courier New', Courier, monospace;
 }
+
+.right{
+    float:right;
+}

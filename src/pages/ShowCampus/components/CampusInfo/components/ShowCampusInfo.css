@@ -16,3 +16,12 @@
 	display: table;
 	clear: both;
 }
+
+
+.pic{
+	align-items: center;
+}
+
+.vaccineP{
+	float:right;
+}
