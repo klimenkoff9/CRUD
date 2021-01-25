@@ -15,4 +15,21 @@
 	content: "";
 	display: table;
 	clear: both;
+	
+	transition: 0.3s;
+	width: 40%;
+}
+p,h3{
+	font-family: 'Courier New', Courier, monospace;
+}
+#top{
+	box-shadow: 0 4px 20px 0 rgba(0,0,0,0.2);
+	padding: 100px 100px;
+	width:80%;
+}
+#top:hover{
+	box-shadow: 0 8px 40px 0 rgba(0,0,0,0.2);
+}
+#topRight{
+	padding: 20px 10px;
 }

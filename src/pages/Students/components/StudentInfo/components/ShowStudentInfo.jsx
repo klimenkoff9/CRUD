@@ -29,13 +29,14 @@ const ShowStudentInfo = (props) => {
           <h4>GPA: {props.gpa}</h4>
         </div>
       </div>
-      </center>
+      
       <br />
       <div className="row2">
         <Link to={`/student/${props.StudentId}/edit`}><button className="btn btn-primary">EDIT</button></Link>
         <button className="btn btn-primary btn-outline-danger" onClick={handleDelete}>DELETE</button>
       </div>
       <br></br>
+      </center>
     </div>
   );
 };
