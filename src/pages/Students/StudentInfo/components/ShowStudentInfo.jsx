@@ -19,24 +19,23 @@ const ShowStudentInfo = (props) => {
 
   return (
     <div>
-      <div className="row">
-        <div className="column">
-          <img src={props.imageUrl} width="400px" height="300px" alt="student"/>
+      <center>
+      <div className ="card">
+        <img id ="profile"src={props.imageUrl} width="400px" height="300px" alt="student"/>
+        <div className="container">
+          <h3>{props.firstName} {props.lastName}</h3>
+          <h4>Email: {props.email}</h4>
+          <h4>GPA: {props.gpa}</h4>
         </div>
-        <div className="column">
-          <h1>
-            {props.firstName} {props.lastName}
-          </h1>
-          <h3>{props.email}</h3>
-          <h3>{props.gpa}</h3>
-        </div>
+
       </div>
-      <br />
-      <div className="row2">
-        <button>EDIT</button>
-        <button onClick={handleDelete}>DELETE</button>
+        <div>
+        <button className="btn btn-primary">EDIT</button>
+        <button className="btn btn-primary btn-outline-danger"onClick={handleDelete}>DELETE</button>
       </div>
+      </center>
     </div>
+    
   );
 };
 
