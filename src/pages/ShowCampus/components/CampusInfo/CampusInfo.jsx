@@ -40,14 +40,14 @@ class CampusInfo extends React.Component {
       <div>
             <ShowCampusInfo
               id={ this.props.id }
-              campusImage={ this.state.imageUrl }
+              /*campusImage={ this.state.imageUrl }
               campusName={ this.state.name }
               campusAddress={ this.state.address }
-              campusDescription={ this.state.description } 
-              /* campusImage={ this.props.campusInfo.imageUrl }
+              campusDescription={ this.state.description } */
+              campusImage={ this.props.campusInfo.imageUrl }
               campusName={ this.props.campusInfo.name }
               campusAddress={ this.props.campusInfo.address }
-              campusDescription={ this.props.campusInfo.description } */
+              campusDescription={ this.props.campusInfo.description }
             />
       </div>
     );
