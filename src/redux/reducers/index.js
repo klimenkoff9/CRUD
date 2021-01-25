@@ -69,7 +69,7 @@ export const getSingleCampus = (id) => {
 	console.log("ABOUT TO THUNK FOR SINGLE CAMPUS" + id);
 	return async (dispatch) => {
 		try {
-			const {data} = await axios.get(`http://localhost:8080/api/campus/nostudent/${id}`);
+			const {data} = await axios.get(`http://localhost:8080/api/campus/${id}`);
 			console.log("WE WANT THIS SINGLE RESPONSE", data);
 			console.log("ABOUT TO DISPATCH DATA");
 			dispatch(gotSingleCampus(data));
