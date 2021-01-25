@@ -33,3 +33,12 @@ p,h3{
 #topRight{
 	padding: 20px 10px;
 }
+
+
+.pic{
+	align-items: center;
+}
+
+.vaccineP{
+	float:right;
+}
