@@ -43,7 +43,7 @@ const Routes = () => {
 			<Route exact path = "/:path/:campusID/addstudent">
 				<AddStudentForm/> 
 			</Route>
-			
+			<Route path = "/submitted" component={Submitted}/>
 			<Route exact path = "/campuses/:id/edit" component={EditCampus}/>
 			<Route exact path = "/student/:id/edit" component={EditStudent}/>
 		</Switch>

@@ -1,53 +1,72 @@
 import React from 'react';
 import Student from '../../../Student';
 import { connect } from "react-redux";
-import { getSingleCampus } from '../../../../../redux/reducers';
+import { Link } from 'react-router-dom';
+import { getSingleCampus, getSingleStudent } from '../../../../../redux/reducers';
 import axios from 'axios';
 
 class StudentCampus extends React.Component {
-
-    constructor ( props ) {
-        super( props )
-
+    constructor(props){
+        super(props);
         this.state = {
-            id : 0,
-            imageUrl : '',
-            students: [],
-            name: ''
+            campusId: '',
+            campusName: '',
+            campusUrl: '',
+            numberOfStudents: []
         }
     }
-
-    async componentDidMount() {
-        console.log(`props for studentcampus component ${this.props.id}`);
-        await this.props.getSingleCampus(this.props.id);
-        this.props.campus.map((item) => {
-            this.setState({
-                id: item.id,
-                name: item.name,
-                imageUrl: item.imageUrl,
-                students: item.students
-            })
+    async componentDidMount () {
+        await this.props.getSingleStudent( this.props.StudentId );
+        this.setState({
+            campusId : this.props.student.campusId
         })
+        await this.props.getSingleCampus( this.props.student.campusId );
+        this.props.campus.map( ( item ) => {
+            this.setState( {
+                campusName: item.name,
+                campusUrl: item.imageUrl,
+                numberOfStudents: item.students
+            } )
+        } )
+        console.log( "the campus id for this student" + this.props.student.campusId );
     }
-    render(){
-        return(
-            <div>
-                <h1>HELLO FROM STUDENT CAMPUS COMPONENT| ID : {this.props.id}</h1>
-                <h1>{this.state.name}</h1>
+
+    render () {
+        const { firstName, lastName, imageUrl, email, gpa, id, campusId } = this.props.student;
+        return (
+            <div width = "340px">
+                {this.state.campusId ?
+                    <div>
+                        <h1>This student is registered to a campus</h1>
+                        <div className="campus-card">
+                            <img src={ this.state.campusUrl } width="280px" height="220px"></img>
+                            <Link to={ `/campuses/${this.state.campusId}` }><h2>{ this.state.campusName }</h2></Link>
+                            <h4>{ this.state.numberOfStudents.length } Students</h4>
+                        </div>
+                    </div> :
+                    <div className="no-campus">
+                        <h1>This student is not registered to a campus</h1>
+                    </div>
+                }
+                <br></br>
             </div>
         )
     }
 }
 
-const mapStateToProps = state => {
-    return{
-        campus: state.campus
-    }
+const mapStateToProps = ( state ) => {
+    console.log( 'Map state to props..' );
+    return {
+        student: state.student,
+        campus: state.campus,
+    };
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = ( dispatch ) => {
+    console.log( 'Map dispatching to props..' );
     return {
-        getSingleCampus: (id) => dispatch( getSingleCampus(id) )
-    }
+        getSingleStudent: ( id ) => dispatch( getSingleStudent( id ) ),
+        getSingleCampus: ( id ) => dispatch( getSingleCampus( id ) ),
+    };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(StudentCampus);
+export default connect( mapStateToProps, mapDispatchToProps )( StudentCampus );

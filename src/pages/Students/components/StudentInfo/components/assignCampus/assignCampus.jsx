@@ -5,32 +5,36 @@ import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 
 class AssignCampus extends Component {
+    constructor ( props ) {
+        super( props )
 
-    state = {
-        campusId: ''
+        this.state = {
+            campusId: ''
+        }
     }
+
     async componentDidMount () {
         console.log( "AssignCampus component mounted" );
         await this.props.getAllCampuses();
         console.log( "AssignCampus reteived all campuses" )
     }
-    handleSubmit = () =>{
-        axios.put(`http://localhost:8080/api/student/${this.props.studentId}`, {campusId : this.state.campusId}); 
+    handleSubmit = () => {
+        axios.put( `http://localhost:8080/api/student/${this.props.StudentId}`, { campusId: this.state.campusId } );
     }
     render () {
         return (
             <div>
-                <select id = "campuses" placeholder = {"campus"} value = {this.state.campusId} onChange = {e => this.setState({campusId : e.target.value})}>
-                    <option selected = "campus">Choose a Campus</option>
+                <select id="campuses" placeholder={ "campus" } value={ this.state.campusId } onChange={ e => this.setState( { campusId: e.target.value } ) }>
+                    <option selected="campus">Choose a Campus</option>
                     {
                         this.props.campuses.map( ( item, index ) => {
                             return (
-                                <option key = {index} value = {item.id} >{item.name}</option>
+                                <option key={ index } value={ item.id } >{ item.name }</option>
                             )
-                        })
+                        } )
                     }
                 </select>
-                <Link to = "/submitted"><button onClick={() => this.handleSubmit()}>Change Campus</button></Link>
+                <Link to="/submitted"><button onClick={ () => this.handleSubmit() }>Change Campus</button></Link>
             </div>
         )
     }

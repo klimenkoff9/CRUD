@@ -35,6 +35,7 @@ const ShowCampusInfo = (props) => {
           <p>{props.campusDescription}</p>
         </div>
       </div>
+      <br></br>
       <div className="row2">
         <h3>{props.campusAddress}</h3>
         <Link to={`/campuses/${props.id}/edit`}><button>EDIT</button></Link>
