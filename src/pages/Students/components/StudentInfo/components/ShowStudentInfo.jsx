@@ -29,8 +29,9 @@ const ShowStudentInfo = (props) => {
         </div>
 
       </div>
-        <div>
-        <button className="btn btn-primary">EDIT</button>
+      <br />
+      <div className="row2">
+        <Link to={`/student/${props.StudentId}/edit`}><button className="btn btn-primary">EDIT</button></Link>
         <button className="btn btn-primary btn-outline-danger"onClick={handleDelete}>DELETE</button>
       </div>
       </center>
